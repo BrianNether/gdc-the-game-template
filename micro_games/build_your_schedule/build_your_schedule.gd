@@ -4,7 +4,7 @@ class_name BuildYourSchedule
 const DAY_COUNT = 5
 enum Difficulty {EASY, NORMAL, HARD}
 
-# TODO: Difficulty should be reset between runs
+static var hook_installed := false
 static var difficulty := Difficulty.EASY
 var running := false
 var time: float = game_duration
@@ -181,3 +181,10 @@ func update_timer() -> void:
 func update_difficulty() -> void:
 	if difficulty == Difficulty.EASY: difficulty = Difficulty.NORMAL
 	elif difficulty == Difficulty.NORMAL: difficulty = Difficulty.HARD
+	if not hook_installed:
+		hook_installed = true
+		GameManager.exit_screen.connect(_on_screen_exited)
+		
+static func _on_screen_exited(screen: GameManager.Screen) -> void:
+	if screen == GameManager.Screen.Game:
+		difficulty = Difficulty.EASY
