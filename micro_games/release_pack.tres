@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MicroGamePack" format=3 uid="uid://bmwgp1jktvgrp"]
+
+[ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="1_skbrk"]
+[ext_resource type="Resource" path="res://micro_games/midnight_deadline/midnight_deadline.tres" id="2_skbrk"]
+[ext_resource type="Script" uid="uid://8d8dt0a71t3a" path="res://main/micro_game_pack.gd" id="3_5eyod"]
+
+[resource]
+script = ExtResource("3_5eyod")
+micro_games = Array[ExtResource("1_skbrk")]([ExtResource("2_skbrk")])
+metadata/_custom_type_script = "uid://8d8dt0a71t3a"

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bvd8iqr5v1mwb"]
+
+[ext_resource type="Script" uid="uid://dtyvffw85vxrq" path="res://main/screens/screen_root.gd" id="1_ct82h"]
+[ext_resource type="Script" uid="uid://d1l1c5xva3lcu" path="res://main/screens/level_switch_button.gd" id="1_yd35k"]
+
+[node name="Main Menu" type="Control" unique_id=546908478]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.005
+offset_right = 1.0050049
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ct82h")
+this_screen = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1546826949]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=348088128]
+layout_mode = 2
+
+[node name="GoToLevelSelect" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2054199560]
+layout_mode = 2
+text = "Level Select"
+script = ExtResource("1_yd35k")
+next_screen = 2
+
+[node name="GoToCredits" type="Button" parent="CenterContainer/VBoxContainer" unique_id=253436785]
+layout_mode = 2
+text = "Credits
+"
+script = ExtResource("1_yd35k")
+next_screen = 4

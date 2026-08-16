@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://3gmyrempxmn4"]
+
+[ext_resource type="Script" uid="uid://dtyvffw85vxrq" path="res://main/screens/screen_root.gd" id="1_3diye"]
+[ext_resource type="Texture2D" uid="uid://6l21fdq5mf6j" path="res://main/screens/title_screen/title_screen_text.png" id="1_hbvq8"]
+[ext_resource type="Texture2D" uid="uid://cgl5ptloxlhfc" path="res://main/screens/title_screen/title_screen_button.png" id="2_3diye"]
+[ext_resource type="Script" uid="uid://d1l1c5xva3lcu" path="res://main/screens/level_switch_button.gd" id="4_i0hjq"]
+
+[sub_resource type="Animation" id="Animation_67ri8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_grrlh"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 1.3, 1.9666667),
+"transitions": PackedFloat32Array(1, 0.90125036, 1.1095674, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i4oc"]
+_data = {
+&"RESET": SubResource("Animation_67ri8"),
+&"pulse": SubResource("Animation_grrlh")
+}
+
+[node name="TitleScreen" type="Control" unique_id=1552944673]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3diye")
+
+[node name="TitleScreenText" type="Sprite2D" parent="." unique_id=521816869]
+position = Vector2(528, 321.99997)
+scale = Vector2(1.3869877, 1.3869877)
+texture = ExtResource("1_hbvq8")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=850535120]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 422.0
+offset_right = 734.0
+offset_bottom = 483.0
+texture_normal = ExtResource("2_3diye")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=590896759]
+libraries/ = SubResource("AnimationLibrary_0i4oc")
+autoplay = &"pulse"
+
+[node name="Button" type="Button" parent="." unique_id=1871435970]
+layout_mode = 0
+offset_left = 428.3302
+offset_top = 466.71228
+offset_right = 436.3302
+offset_bottom = 474.71228
+text = "MAIN MENU
+"
+script = ExtResource("4_i0hjq")
+next_screen = 1

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MicroGameInfo" format=3 uid="uid://cua6ov2bo1lu0"]
+
+[ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="1_4vwow"]
+[ext_resource type="PackedScene" uid="uid://cntmu77vyjwti" path="res://micro_games/template_game/micro_game_template.tscn" id="1_1878r"]
+
+[resource]
+script = ExtResource("1_4vwow")
+game_scene = ExtResource("1_1878r")
+metadata/_custom_type_script = "uid://dciiueikp53p7"

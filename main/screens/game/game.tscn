@@ -1,0 +1,376 @@
+[gd_scene format=3 uid="uid://dxwa1yvb1t7sa"]
+
+[ext_resource type="Script" uid="uid://h8nx6qhkmjcj" path="res://main/screens/game/game.gd" id="1_5ttid"]
+[ext_resource type="PackedScene" uid="uid://b4jstj5m6fgq4" path="res://shared/timers/default_timer_v1/default_timer.tscn" id="2_mgkyc"]
+[ext_resource type="Resource" uid="uid://bmwgp1jktvgrp" path="res://micro_games/release_pack.tres" id="3_bg6tk"]
+[ext_resource type="Resource" uid="uid://ppu8stn1iu6g" path="res://micro_games/test_pack.tres" id="4_87ans"]
+[ext_resource type="Script" uid="uid://ccqkcbfi77v8e" path="res://main/screens/game/run_micro_games.gd" id="5_8damv"]
+[ext_resource type="Script" uid="uid://blayb6jbwkmgo" path="res://main/micro_game_transition.gd" id="6_mgkyc"]
+[ext_resource type="Texture2D" uid="uid://kpfddjgqx7t3" path="res://main/assets/controls/Untitled_Artwork-4 11.png" id="7_ewj8m"]
+[ext_resource type="Texture2D" uid="uid://bvwq01bppipqr" path="res://main/assets/controls/Untitled_Artwork-1 30.png" id="8_a2qi7"]
+[ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="8_cuboj"]
+[ext_resource type="Texture2D" uid="uid://cg56y78outury" path="res://main/assets/controls/Untitled_Artwork-2 29.png" id="9_cuboj"]
+[ext_resource type="Texture2D" uid="uid://cn1tkmb33p7cg" path="res://main/assets/controls/Untitled_Artwork-3 15.png" id="10_fnicf"]
+[ext_resource type="Script" uid="uid://bvevn42has1dp" path="res://main/screens/game/digits.gd" id="13_fnicf"]
+[ext_resource type="PackedScene" uid="uid://vnnjwaveox7e" path="res://main/screens/game/digit.tscn" id="14_1sojv"]
+[ext_resource type="Texture2D" uid="uid://co5kq317t2tu3" path="res://main/assets/digits/Frame 1.png" id="14_gmayk"]
+[ext_resource type="AudioStream" uid="uid://denxaibsfhfw5" path="res://main/assets/WL In-Game.ogg" id="16_pa31v"]
+[ext_resource type="Texture2D" uid="uid://bwj1icwaji6lt" path="res://main/assets/lives/complete.png" id="19_m81j6"]
+
+[sub_resource type="Resource" id="Resource_bsumw"]
+script = ExtResource("5_8damv")
+metadata/_custom_type_script = "uid://ccqkcbfi77v8e"
+
+[sub_resource type="LabelSettings" id="LabelSettings_fnicf"]
+font = ExtResource("8_cuboj")
+font_size = 75
+
+[sub_resource type="LabelSettings" id="LabelSettings_1sojv"]
+font = ExtResource("8_cuboj")
+font_size = 100
+
+[sub_resource type="Animation" id="Animation_1sojv"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/score_display:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/score_display:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pa31v"]
+resource_name = "new_animation"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/score_display:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(1, 3, 2, 1),
+"points": PackedFloat32Array(-361, -0.0005, 0, 0.0005, 0, -294.89673, -0.06666666, -84.73758, 0.06666666, 84.73758, 298.26642, -0.06658496, 20.478046, 0.020409375, -6.2768555, 270.02054, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/score_display:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(59, 0, 0, 0, 0, 59, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_s0qyw"]
+resource_name = "score_slide_out"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/score_display:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(270.021, -0.11425735, 415.96307, 0.2, -728.1161, -363.9422, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/score_display:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(59, -0.25, 0, 0.25, 0, 59, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0qyw"]
+_data = {
+&"RESET": SubResource("Animation_1sojv"),
+&"score_slide_in": SubResource("Animation_pa31v"),
+&"score_slide_out": SubResource("Animation_s0qyw")
+}
+
+[node name="Game" type="Control" unique_id=189926272]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ttid")
+default_timer_no_UI = ExtResource("2_mgkyc")
+default_timer_with_UI = ExtResource("2_mgkyc")
+release_pack = ExtResource("3_bg6tk")
+test_pack = ExtResource("4_87ans")
+game_selector = SubResource("Resource_bsumw")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1483915721]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+stretch = true
+
+[node name="GameViewport" type="SubViewport" parent="SubViewportContainer" unique_id=330540801]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="TransitionOverlay" type="Control" parent="." unique_id=702312723]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_mgkyc")
+
+[node name="ColorRect" type="ColorRect" parent="TransitionOverlay" unique_id=277413389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.96862745, 0.91764706, 1)
+
+[node name="info_display" type="Control" parent="TransitionOverlay" unique_id=508146066]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="TransitionOverlay/info_display" unique_id=1308421588]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -136.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="PanelContainer" parent="TransitionOverlay/info_display/CenterContainer" unique_id=1295276014]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="TransitionOverlay/info_display/CenterContainer/CenterContainer" unique_id=1414602454]
+layout_mode = 2
+color = Color(0.13725491, 0.17254902, 0.3882353, 1)
+
+[node name="Container" type="MarginContainer" parent="TransitionOverlay/info_display/CenterContainer/CenterContainer" unique_id=1211748060]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="description" type="Label" parent="TransitionOverlay/info_display/CenterContainer/CenterContainer/Container" unique_id=706155960]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Do the thing!"
+label_settings = SubResource("LabelSettings_fnicf")
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="TransitionOverlay/info_display" unique_id=1629343944]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 85.0
+offset_right = 20.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mouse_only_input" type="CenterContainer" parent="TransitionOverlay/info_display/Control" unique_id=487880121]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="mouse_icon" type="TextureRect" parent="TransitionOverlay/info_display/Control/mouse_only_input" unique_id=1753998578]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_ewj8m")
+
+[node name="keyboard_only_input" type="CenterContainer" parent="TransitionOverlay/info_display/Control" unique_id=1503553284]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="wasd_icon" type="TextureRect" parent="TransitionOverlay/info_display/Control/keyboard_only_input" unique_id=384251255]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("8_a2qi7")
+
+[node name="keyboard_and_mouse_input" type="CenterContainer" parent="TransitionOverlay/info_display/Control" unique_id=96335336]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -150.0
+offset_right = 409.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TransitionOverlay/info_display/Control/keyboard_and_mouse_input" unique_id=1762760902]
+layout_mode = 2
+
+[node name="keyboard_icon" type="TextureRect" parent="TransitionOverlay/info_display/Control/keyboard_and_mouse_input/HBoxContainer" unique_id=985446204]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_fnicf")
+
+[node name="plus_icon" type="TextureRect" parent="TransitionOverlay/info_display/Control/keyboard_and_mouse_input/HBoxContainer" unique_id=1315529651]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_cuboj")
+stretch_mode = 2
+
+[node name="mouse_icon" type="TextureRect" parent="TransitionOverlay/info_display/Control/keyboard_and_mouse_input/HBoxContainer" unique_id=1960668277]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_ewj8m")
+
+[node name="Control" type="Control" parent="TransitionOverlay" unique_id=502760844]
+anchors_preset = 0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 10.0
+
+[node name="score_display" type="Control" parent="TransitionOverlay/Control" unique_id=661193621]
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TransitionOverlay/Control/score_display" unique_id=1071383809]
+layout_mode = 0
+offset_left = -347.0
+offset_top = -8.0
+offset_right = 158.0
+offset_bottom = 107.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 20
+
+[node name="ColorRect" type="ColorRect" parent="TransitionOverlay/Control/score_display/MarginContainer" unique_id=986869220]
+layout_mode = 2
+color = Color(0.13725491, 0.17254902, 0.3882353, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="TransitionOverlay/Control/score_display/MarginContainer" unique_id=1888062230]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TransitionOverlay/Control/score_display/MarginContainer/MarginContainer" unique_id=1156144916]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TransitionOverlay/Control/score_display/MarginContainer/MarginContainer/HBoxContainer" unique_id=24474172]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_1sojv")
+horizontal_alignment = 2
+
+[node name="score_number" type="HBoxContainer" parent="TransitionOverlay/Control/score_display/MarginContainer/MarginContainer/HBoxContainer" unique_id=1602955781]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -15
+script = ExtResource("13_fnicf")
+
+[node name="digit" parent="TransitionOverlay/Control/score_display/MarginContainer/MarginContainer/HBoxContainer/score_number" unique_id=850420 instance=ExtResource("14_1sojv")]
+layout_mode = 2
+
+[node name="digit2" type="TextureRect" parent="TransitionOverlay/Control/score_display/MarginContainer/MarginContainer/HBoxContainer/score_number" unique_id=739987226]
+layout_mode = 2
+texture = ExtResource("14_gmayk")
+
+[node name="digit3" type="TextureRect" parent="TransitionOverlay/Control/score_display/MarginContainer/MarginContainer/HBoxContainer/score_number" unique_id=1791439407]
+layout_mode = 2
+texture = ExtResource("14_gmayk")
+
+[node name="CenterContainer" type="CenterContainer" parent="TransitionOverlay" unique_id=778396276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lives_display" type="TextureRect" parent="TransitionOverlay/CenterContainer" unique_id=1072690003]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("19_m81j6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionOverlay" unique_id=372049456]
+libraries/ = SubResource("AnimationLibrary_s0qyw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=539155950]
+stream = ExtResource("16_pa31v")
+volume_db = -15.0
+parameters/looping = true

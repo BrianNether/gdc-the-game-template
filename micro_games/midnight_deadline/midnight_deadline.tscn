@@ -1,0 +1,536 @@
+[gd_scene format=3 uid="uid://5q2f5qdgv0xk"]
+
+[ext_resource type="Script" uid="uid://bnaogh7860pav" path="res://micro_games/midnight_deadline/Scripts/midnight_deadline.gd" id="1_3fgaj"]
+[ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="2_c8w63"]
+[ext_resource type="Script" uid="uid://bnn56uervgnjw" path="res://micro_games/midnight_deadline/Scripts/drop_zone.gd" id="4_jiwgc"]
+[ext_resource type="Shader" uid="uid://celc3ghk62b7y" path="res://micro_games/midnight_deadline/Assets/uiborder.gdshader" id="5_c8w63"]
+[ext_resource type="Script" uid="uid://b6ouw4338h1wi" path="res://micro_games/midnight_deadline/Scripts/ui_border_sync.gd" id="6_8jvyq"]
+[ext_resource type="Script" uid="uid://bkfmqnq0rhro3" path="res://micro_games/midnight_deadline/Scripts/dashed_border.gd" id="7_jiwgc"]
+[ext_resource type="Script" uid="uid://bqt4o5nwta0uh" path="res://micro_games/midnight_deadline/Scripts/pixel_button.gd" id="8_pxlbtn"]
+[ext_resource type="Texture2D" uid="uid://c77khijsixeuw" path="res://micro_games/midnight_deadline/Assets/folder.png" id="9_folder"]
+[ext_resource type="Script" uid="uid://b14tdv801ji08" path="res://micro_games/midnight_deadline/Scripts/file_explorer_grid.gd" id="10_grid"]
+[ext_resource type="Script" uid="uid://bb0mncy1dqwtl" path="res://micro_games/midnight_deadline/Scripts/scroll_style.gd" id="11_scrollstyle"]
+[ext_resource type="Texture2D" uid="uid://c2wf2bj8klk1p" path="res://micro_games/midnight_deadline/Assets/pdf.png" id="12_pdf"]
+[ext_resource type="Texture2D" uid="uid://dorhfwdmnqudq" path="res://micro_games/midnight_deadline/Assets/c++.png" id="13_cpp"]
+[ext_resource type="Texture2D" uid="uid://c11170m73ah11" path="res://micro_games/midnight_deadline/Assets/riot.png" id="14_riot"]
+[ext_resource type="Shader" uid="uid://dj1qw6ftd00sd" path="res://micro_games/midnight_deadline/Assets/crt_filter.gdshader" id="15_crt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i48dq"]
+shader = ExtResource("5_c8w63")
+shader_parameter/top_left_color = Color(1, 1, 1, 1)
+shader_parameter/bottom_right_color = Color(0.192, 0.192, 0.192, 1)
+shader_parameter/border_width = 10.0
+shader_parameter/rect_size = Vector2(601, 828)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jiwgc"]
+shader = ExtResource("5_c8w63")
+shader_parameter/top_left_color = Color(1, 1, 1, 1)
+shader_parameter/bottom_right_color = Color(0.192, 0.192, 0.192, 1)
+shader_parameter/border_width = 10.0
+shader_parameter/rect_size = Vector2(100, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qdtl"]
+shader = ExtResource("5_c8w63")
+shader_parameter/top_left_color = Color(1, 1, 1, 1)
+shader_parameter/bottom_right_color = Color(0.192, 0.192, 0.192, 1)
+shader_parameter/border_width = 10.0
+shader_parameter/rect_size = Vector2(1194, 828)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5a1j"]
+shader = ExtResource("5_c8w63")
+shader_parameter/top_left_color = Color(1, 1, 1, 1)
+shader_parameter/bottom_right_color = Color(0.192, 0.192, 0.192, 1)
+shader_parameter/border_width = 10.0
+shader_parameter/rect_size = Vector2(350, 80)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6gjl0"]
+shader = ExtResource("5_c8w63")
+shader_parameter/top_left_color = Color(1, 1, 1, 1)
+shader_parameter/bottom_right_color = Color(0.192, 0.192, 0.192, 1)
+shader_parameter/border_width = 10.0
+shader_parameter/rect_size = Vector2(350, 80)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crt"]
+shader = ExtResource("15_crt")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/brightness = 1.04000002565
+shader_parameter/scanlines_opacity = 0.042000001995
+shader_parameter/scanlines_width = 0.02400000114
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 3.2990001567025
+shader_parameter/roll_size = 29.474001400015
+shader_parameter/roll_variation = 0.51500002120262
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 0.00100004754750004
+shader_parameter/noise_opacity = 0.1210000057475
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.066000003135
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.1450000068875
+shader_parameter/vignette_opacity = 0.182000008645
+
+[node name="MidnightDeadline" type="Node2D" unique_id=1428187998]
+script = ExtResource("1_3fgaj")
+control_format = 0
+lose_on_timeout = true
+timer_type = 0
+game_duration = 10.0
+
+[node name="UI" type="Control" parent="." unique_id=1820372352]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Wallpaper" type="ColorRect" parent="UI" unique_id=827480268]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.29760885, 0.37466225, 0.4583947, 1)
+
+[node name="FileExplorerWindow" type="Control" parent="UI" unique_id=1893164982]
+anchors_preset = 0
+offset_left = 42.0
+offset_top = 66.0
+offset_right = 642.0
+offset_bottom = 894.0
+mouse_filter = 2
+
+[node name="BG" type="ColorRect" parent="UI/FileExplorerWindow" unique_id=902684322]
+material = SubResource("ShaderMaterial_i48dq")
+layout_mode = 0
+offset_right = 601.0
+offset_bottom = 828.0
+mouse_filter = 2
+color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+script = ExtResource("6_8jvyq")
+
+[node name="TitleBar" type="ColorRect" parent="UI/FileExplorerWindow" unique_id=1428139776]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 591.0
+offset_bottom = 75.0
+mouse_filter = 2
+color = Color(0.6255974, 0.625597, 0.6255972, 1)
+
+[node name="CloseButton" type="ColorRect" parent="UI/FileExplorerWindow" unique_id=288451425]
+material = SubResource("ShaderMaterial_jiwgc")
+layout_mode = 0
+offset_left = 532.0
+offset_top = 17.0
+offset_right = 582.0
+offset_bottom = 67.0
+mouse_filter = 2
+color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+
+[node name="TitleLabel" type="Label" parent="UI/FileExplorerWindow/CloseButton" unique_id=1710709771]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 42.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 60
+text = "×"
+
+[node name="TitleLabel" type="Label" parent="UI/FileExplorerWindow" unique_id=2103403918]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 15.0
+offset_right = 456.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 60
+text = "FILE EXPLORER"
+
+[node name="FileScroll" type="ScrollContainer" parent="UI/FileExplorerWindow" unique_id=1732887132]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 100.0
+offset_right = 581.0
+offset_bottom = 808.0
+horizontal_scroll_mode = 0
+script = ExtResource("11_scrollstyle")
+
+[node name="FileGridMargin" type="MarginContainer" parent="UI/FileExplorerWindow/FileScroll" unique_id=979965029]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+
+[node name="FileGrid" type="GridContainer" parent="UI/FileExplorerWindow/FileScroll/FileGridMargin" unique_id=979965030]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 30
+columns = 2
+script = ExtResource("10_grid")
+pdf_icon = ExtResource("12_pdf")
+cpp_icon = ExtResource("13_cpp")
+folder_icon = ExtResource("9_folder")
+riot_icon = ExtResource("14_riot")
+pdf_filler_names = PackedStringArray("Notes.pdf", "Old_Draft.pdf", "Syllabus.pdf")
+cpp_filler_names = PackedStringArray("main.cpp", "game.cpp", "utils.cpp")
+folder_filler_names = PackedStringArray("Homework", "Photos", "Downloads")
+
+[node name="BrowserWindow" type="Control" parent="UI" unique_id=1903552398]
+anchors_preset = 0
+offset_left = 681.0
+offset_top = 66.0
+offset_right = 1875.0
+offset_bottom = 894.0
+mouse_filter = 2
+
+[node name="BG" type="ColorRect" parent="UI/BrowserWindow" unique_id=1037825855]
+material = SubResource("ShaderMaterial_7qdtl")
+layout_mode = 0
+offset_right = 1194.0
+offset_bottom = 828.0
+mouse_filter = 2
+color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+script = ExtResource("6_8jvyq")
+
+[node name="TitleBar" type="ColorRect" parent="UI/BrowserWindow" unique_id=527595389]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 1185.0
+offset_bottom = 75.0
+mouse_filter = 2
+color = Color(0.62352943, 0.62352943, 0.62352943, 1)
+
+[node name="CloseButton" type="ColorRect" parent="UI/BrowserWindow" unique_id=662331158]
+material = SubResource("ShaderMaterial_jiwgc")
+layout_mode = 0
+offset_left = 1127.0
+offset_top = 16.0
+offset_right = 1177.0
+offset_bottom = 66.0
+mouse_filter = 2
+color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+
+[node name="TitleLabel" type="Label" parent="UI/BrowserWindow/CloseButton" unique_id=1331067455]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 42.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 60
+text = "×"
+
+[node name="TitleLabel" type="Label" parent="UI/BrowserWindow" unique_id=2009319421]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 14.0
+offset_right = 263.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 60
+text = "BROWSER"
+
+[node name="Breadcrumb" type="Label" parent="UI/BrowserWindow" unique_id=1589807883]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 113.0
+offset_right = 510.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.20392157, 0.49411765, 0.8235294, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 36
+text = "ASSIGNMENT > FINAL ESSAY"
+
+[node name="Heading" type="Label" parent="UI/BrowserWindow" unique_id=1863038800]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 151.0
+offset_right = 648.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 100
+text = "FINAL ESSAY"
+
+[node name="SubHeading" type="Label" parent="UI/BrowserWindow" unique_id=575985130]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 291.0
+offset_right = 54.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0.20392157, 0.49411765, 0.8235294, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 33
+text = "> Show assignment information"
+
+[node name="DropZone" type="Control" parent="UI/BrowserWindow" unique_id=280251210]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 363.0
+offset_right = 1128.0
+offset_bottom = 623.0
+script = ExtResource("4_jiwgc")
+
+[node name="IdleState" type="Control" parent="UI/BrowserWindow/DropZone" unique_id=334407366]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Border" type="Control" parent="UI/BrowserWindow/DropZone/IdleState" unique_id=1033284998]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_jiwgc")
+border_width = 10.0
+dash_length = 25.0
+gap_length = 15.0
+corner_gap = 10.0
+
+[node name="Label" type="Label" parent="UI/BrowserWindow/DropZone/IdleState" unique_id=339659054]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 71.0
+offset_right = 1000.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0.31764707, 0.31764707, 0.31764707, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 100
+text = "DROP FILES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoverState" type="Control" parent="UI/BrowserWindow/DropZone" unique_id=1707558895]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Fill" type="ColorRect" parent="UI/BrowserWindow/DropZone/HoverState" unique_id=1858621741]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.7882353, 0.8862745, 0.96862745, 1)
+
+[node name="Border" type="Control" parent="UI/BrowserWindow/DropZone/HoverState" unique_id=1334087449]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_jiwgc")
+border_color = Color(0.20392157, 0.49411765, 0.8235294, 1)
+border_width = 10.0
+dash_length = 25.0
+gap_length = 15.0
+corner_gap = 10.0
+
+[node name="Label2" type="Label" parent="UI/BrowserWindow/DropZone/HoverState" unique_id=1691281134]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 71.0
+offset_right = 1000.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0.20392157, 0.49411765, 0.8235294, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 100
+text = "DROP FILES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubmitButton" type="BaseButton" parent="UI/BrowserWindow" unique_id=777321377]
+unique_name_in_owner = true
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 48.0
+offset_top = 675.0
+offset_right = 372.0
+offset_bottom = 777.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(162, 51)
+pivot_offset_ratio = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 2
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+disabled = true
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("8_pxlbtn")
+font = ExtResource("2_c8w63")
+font_size = 42
+
+[node name="Taskbar" type="Control" parent="UI" unique_id=2109896368]
+anchors_preset = 0
+offset_top = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Bg" type="ColorRect" parent="UI/Taskbar" unique_id=1082359963]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+
+[node name="Bg" type="ColorRect" parent="UI/Taskbar/Bg" unique_id=528203791]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 10.0
+mouse_filter = 2
+
+[node name="FileTab" type="ColorRect" parent="UI/Taskbar" unique_id=1682915889]
+material = SubResource("ShaderMaterial_b5a1j")
+layout_mode = 0
+offset_left = 42.0
+offset_top = 21.0
+offset_right = 392.0
+offset_bottom = 101.0
+mouse_filter = 2
+color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+script = ExtResource("6_8jvyq")
+
+[node name="FileTabLabel" type="Label" parent="UI/Taskbar" unique_id=1856356845]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 21.0
+offset_right = 362.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 60
+text = "FILE EXP..."
+vertical_alignment = 1
+
+[node name="BrowserTab" type="ColorRect" parent="UI/Taskbar" unique_id=1287160918]
+material = SubResource("ShaderMaterial_6gjl0")
+layout_mode = 0
+offset_left = 409.0
+offset_top = 21.0
+offset_right = 759.0
+offset_bottom = 101.0
+mouse_filter = 2
+color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+script = ExtResource("6_8jvyq")
+
+[node name="BrowserTabLabel" type="Label" parent="UI/Taskbar" unique_id=73170619]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 21.0
+offset_right = 729.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 60
+text = "BROWSER"
+vertical_alignment = 1
+
+[node name="ClockLabel" type="Label" parent="UI/Taskbar" unique_id=1796271145]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1474.0
+offset_top = 12.0
+offset_right = 1894.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("2_c8w63")
+theme_override_font_sizes/font_size = 100
+text = "11:59:55"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CRTFilter" type="ColorRect" parent="UI" unique_id=850843412]
+material = SubResource("ShaderMaterial_crt")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cntmu77vyjwti"]
+
+[ext_resource type="Script" uid="uid://c6chk3rdyriqb" path="res://main/micro_game.gd" id="1_xvdju"]
+
+[node name="MyMicroGame" type="Node2D" unique_id=1748513247]
+script = ExtResource("1_xvdju")
+metadata/_custom_type_script = "uid://c6chk3rdyriqb"
+
+[node name="Label" type="Label" parent="." unique_id=1722036189]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 534.0
+offset_top = 87.0
+offset_right = 674.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is a template!"
