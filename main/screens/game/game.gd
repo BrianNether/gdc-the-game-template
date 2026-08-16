@@ -130,6 +130,7 @@ func on_game_timeout():
 		current_game.win.emit()
 
 func on_game_end(win: bool):
+	current_game.timer.stop()
 	await get_tree().create_timer(current_game.post_game_time).timeout
 
 	if win:
