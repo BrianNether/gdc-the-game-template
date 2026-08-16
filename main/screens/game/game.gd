@@ -85,7 +85,7 @@ func on_screen_exit(screen):
 @onready var game_viewport = %GameViewport
 @onready var in_game_ui = "."
 
-func setup_micro_game(micro_game : MicroGame):
+func setup_micro_game(micro_game : MicroGame, info : MicroGameInfo):
 	if micro_game.timer == null:
 		default_timer = null
 		
@@ -99,8 +99,19 @@ func setup_micro_game(micro_game : MicroGame):
 			add_child(default_timer)
 
 		micro_game.timer = default_timer
-		
+	
+	
+	if info.width > 0 and info.height > 0:
+		game_viewport.size_2d_override.x = info.width
+		game_viewport.size_2d_override.y = info.height
+	
+	else:
+		game_viewport.size_2d_override.x = 0
+		game_viewport.size_2d_override.y = 0
+	
 	game_viewport.add_child(micro_game)
+	
+	
 	current_game = micro_game
 
 func start_game():
@@ -138,6 +149,9 @@ func unload_game():
 	if current_game:
 		current_game.get_parent().remove_child(current_game)
 	game_selector.end_current_game()
+	
+	game_viewport.size_2d_override.x = 0
+	game_viewport.size_2d_override.y = 0
 
 func play_next_game():
 	if lives == 0:
@@ -151,5 +165,5 @@ func play_next_game():
 		GameManager.go_to_end()
 
 	else:
-		setup_micro_game(micro_game)
+		setup_micro_game(micro_game, game_selector.current_game)
 		start_game()
