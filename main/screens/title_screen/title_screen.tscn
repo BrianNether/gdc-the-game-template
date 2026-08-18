@@ -1,46 +1,70 @@
 [gd_scene format=3 uid="uid://3gmyrempxmn4"]
 
-[ext_resource type="Script" uid="uid://dtyvffw85vxrq" path="res://main/screens/screen_root.gd" id="1_3diye"]
-[ext_resource type="Texture2D" uid="uid://6l21fdq5mf6j" path="res://main/screens/title_screen/title_screen_text.png" id="1_hbvq8"]
-[ext_resource type="Texture2D" uid="uid://cgl5ptloxlhfc" path="res://main/screens/title_screen/title_screen_button.png" id="2_3diye"]
-[ext_resource type="Script" uid="uid://d1l1c5xva3lcu" path="res://main/screens/level_switch_button.gd" id="4_i0hjq"]
+[ext_resource type="Script" uid="uid://debp21wfkun7o" path="res://main/screens/title_screen/title_screen.gd" id="1_i0hjq"]
+[ext_resource type="Texture2D" uid="uid://dwcsm7wxonwkx" path="res://main/screens/title_screen/title-art-1.png" id="2_3diye"]
+[ext_resource type="Texture2D" uid="uid://b8hkve50ixq7i" path="res://main/screens/title_screen/title-art-2.png" id="3_i0hjq"]
+[ext_resource type="Shader" uid="uid://b61nj6hgu8p2v" path="res://main/screens/title_screen/sponge-wipe.gdshader" id="3_t5vr7"]
+[ext_resource type="Texture2D" uid="uid://bjcse72h1plmj" path="res://main/screens/title_screen/enter-button.png" id="4_t5vr7"]
 
-[sub_resource type="Animation" id="Animation_67ri8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdu26"]
+shader = ExtResource("3_t5vr7")
+
+[sub_resource type="Animation" id="Animation_i0hjq"]
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/path = NodePath("enter-label:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("enter-label:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_grrlh"]
-resource_name = "pulse"
+[sub_resource type="Animation" id="Animation_t5vr7"]
+resource_name = "enter-button"
 length = 2.0
 loop_mode = 1
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/path = NodePath("enter-label:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.76666665, 1.3, 1.9666667),
-"transitions": PackedFloat32Array(1, 0.90125036, 1.1095674, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(0.95, 0.95), Vector2(1, 1)]
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.16666667, 0, 0.16666667, 0, 1, -0.099999994, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("enter-label:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.16666667, 0, 0.16666667, 0, 1, -0.11666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i4oc"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bdu26"]
 _data = {
-&"RESET": SubResource("Animation_67ri8"),
-&"pulse": SubResource("Animation_grrlh")
+&"RESET": SubResource("Animation_i0hjq"),
+&"enter-button": SubResource("Animation_t5vr7")
 }
 
 [node name="TitleScreen" type="Control" unique_id=1552944673]
@@ -50,32 +74,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3diye")
+script = ExtResource("1_i0hjq")
 
-[node name="TitleScreenText" type="Sprite2D" parent="." unique_id=521816869]
-position = Vector2(528, 321.99997)
-scale = Vector2(1.3869877, 1.3869877)
-texture = ExtResource("1_hbvq8")
-
-[node name="TextureButton" type="TextureButton" parent="." unique_id=850535120]
+[node name="TitleArt1" type="TextureRect" parent="." unique_id=1828737188]
+modulate = Color(0.13725491, 0.17254902, 0.3882353, 1)
 layout_mode = 0
-offset_left = 557.0
-offset_top = 422.0
-offset_right = 734.0
-offset_bottom = 483.0
-texture_normal = ExtResource("2_3diye")
+offset_left = 144.0
+offset_top = 81.0
+offset_right = 1008.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3diye")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=590896759]
-libraries/ = SubResource("AnimationLibrary_0i4oc")
-autoplay = &"pulse"
-
-[node name="Button" type="Button" parent="." unique_id=1871435970]
+[node name="TitleArt2" type="TextureRect" parent="." unique_id=873200028]
+modulate = Color(0.13725491, 0.17254902, 0.3882353, 1)
+material = SubResource("ShaderMaterial_bdu26")
 layout_mode = 0
-offset_left = 428.3302
-offset_top = 466.71228
-offset_right = 436.3302
-offset_bottom = 474.71228
-text = "MAIN MENU
-"
-script = ExtResource("4_i0hjq")
-next_screen = 1
+offset_left = 147.0
+offset_top = 78.0
+offset_right = 1011.0
+offset_bottom = 564.0
+texture = ExtResource("3_i0hjq")
+
+[node name="enter-label" type="TextureRect" parent="." unique_id=1811151700]
+modulate = Color(0.13725491, 0.17254902, 0.3882353, 1)
+layout_mode = 0
+offset_left = 144.0
+offset_top = 81.0
+offset_right = 1008.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.76)
+texture = ExtResource("4_t5vr7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1430455207]
+libraries/ = SubResource("AnimationLibrary_bdu26")
+autoplay = &"enter-button"
