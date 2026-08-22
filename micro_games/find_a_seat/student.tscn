@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://biqmxydcvxib6"]
+
+[ext_resource type="Script" uid="uid://qp7fsqnuhlw5" path="res://micro_games/find_a_seat/scripts/student.gd" id="1_eh7pc"]
+[ext_resource type="Texture2D" uid="uid://bi0am6r3uqwy2" path="res://micro_games/find_a_seat/assets/body_blank.png" id="2_310ey"]
+[ext_resource type="Texture2D" uid="uid://ypp268xjl40s" path="res://micro_games/find_a_seat/assets/head_blank.png" id="3_gn0i5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh7pc"]
+atlas = ExtResource("2_310ey")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_310ey"]
+atlas = ExtResource("2_310ey")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn0i5"]
+atlas = ExtResource("2_310ey")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4hwe"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh7pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_310ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn0i5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4sd5"]
+atlas = ExtResource("3_gn0i5")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u53fr"]
+atlas = ExtResource("3_gn0i5")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy20c"]
+atlas = ExtResource("3_gn0i5")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17b1a"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4sd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u53fr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy20c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Student" type="Node2D" unique_id=2116905867]
+script = ExtResource("1_eh7pc")
+
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=1146336265]
+sprite_frames = SubResource("SpriteFrames_h4hwe")
+autoplay = "default"
+
+[node name="Head" type="AnimatedSprite2D" parent="." unique_id=1944646660]
+sprite_frames = SubResource("SpriteFrames_17b1a")
+autoplay = "default"
+frame_progress = 0.34890375
