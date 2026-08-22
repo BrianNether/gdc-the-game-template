@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dxwa1yvb1t7sa"]
 
 [ext_resource type="Script" uid="uid://h8nx6qhkmjcj" path="res://main/screens/game/game.gd" id="1_5ttid"]
-[ext_resource type="PackedScene" uid="uid://b4jstj5m6fgq4" path="res://shared/timers/default_timer_v1/default_timer.tscn" id="2_mgkyc"]
+[ext_resource type="PackedScene" uid="uid://b4jstj5m6fgq4" path="res://shared/timers/default_timer_ui/default_timer_ui.tscn" id="2_mgkyc"]
 [ext_resource type="Resource" uid="uid://bmwgp1jktvgrp" path="res://micro_games/release_pack.tres" id="3_bg6tk"]
+[ext_resource type="PackedScene" uid="uid://wn163avtbdhb" path="res://shared/timers/default_timer_v1/default_timer.tscn" id="3_s0qyw"]
 [ext_resource type="Resource" uid="uid://ppu8stn1iu6g" path="res://micro_games/test_pack.tres" id="4_87ans"]
 [ext_resource type="Script" uid="uid://ccqkcbfi77v8e" path="res://main/screens/game/run_micro_games.gd" id="5_8damv"]
 [ext_resource type="Script" uid="uid://blayb6jbwkmgo" path="res://main/micro_game_transition.gd" id="6_mgkyc"]
@@ -121,7 +122,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5ttid")
-default_timer_no_UI = ExtResource("2_mgkyc")
+default_timer_no_UI = ExtResource("3_s0qyw")
 default_timer_with_UI = ExtResource("2_mgkyc")
 release_pack = ExtResource("3_bg6tk")
 test_pack = ExtResource("4_87ans")
