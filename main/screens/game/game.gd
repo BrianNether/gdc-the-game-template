@@ -11,6 +11,14 @@ class_name Game
 	default_timer_with_UI
 ]
 
+@export_group("Transitions")
+@export var exit_game_win_transtion : Transition
+@export var exit_game_lose_transtion : Transition
+@export var enter_game_transtion : Transition
+@export var speed_up_transtion : Transition
+@export var score_up_transtion : Transition
+@export var lives_down_transtion : Transition
+
 @export_group("Micro Games")
 @export var release_pack : MicroGamePack
 @export var test_pack : MicroGamePack
@@ -24,7 +32,7 @@ enum GamePackSelection {
 @export var game_selector : GameSelector
 
 @onready var all_games : Array[MicroGameInfo] 
-@onready var music_player : AudioStreamPlayer = $AudioStreamPlayer
+@onready var music_player : AudioStreamPlayer = $MusicPlayer
 
 func load_all_game_info():
 	if game_pack_selection == GamePackSelection.ReleaseGames:
@@ -49,7 +57,7 @@ func _reset_cursor() -> void:
 
 var current_game : MicroGame
 var default_timer : MicroGameTimer
-
+var game_timed_out : bool
 var lives = 3
 var score = 0
 
@@ -100,7 +108,6 @@ func setup_micro_game(micro_game : MicroGame, info : MicroGameInfo):
 
 		micro_game.timer = default_timer
 	
-	
 	if info.width > 0 and info.height > 0:
 		game_viewport.size_2d_override.x = info.width
 		game_viewport.size_2d_override.y = info.height
@@ -111,36 +118,61 @@ func setup_micro_game(micro_game : MicroGame, info : MicroGameInfo):
 	
 	game_viewport.add_child(micro_game)
 	
-	
 	current_game = micro_game
+	game_timed_out = false
 
 func start_game():
 	print("playing game: ", game_selector.current_game.title, " lives: ", lives, " score: ", score)
 	current_game.timer.timeout.connect(on_game_timeout)
 	current_game.win.connect(on_game_end.bind(true))
 	current_game.lose.connect(on_game_end.bind(false))
-
+	
+	var mg_enter = MicroGameEvent.new(
+		game_selector.current_game, 
+		MicroGameEvent.StateChange.ENTER, 
+		MicroGameEvent.Outcome.NONE,
+		MicroGameEvent.OutcomeReason.NONE
+	)
+	await enter_game_transtion.execute(make_transition_context(), mg_enter)
+	
 	current_game.start.emit()
 	current_game.timer.start(current_game.game_duration)
 
 func on_game_timeout():
+	game_timed_out = true
 	if current_game.lose_on_timeout:
 		current_game.lose.emit()
 	else:
 		current_game.win.emit()
 
 func on_game_end(win: bool):
-	current_game.timer.stop()
-	await get_tree().create_timer(current_game.post_game_time).timeout
-
-	if win:
-		score += 1
-	else:
-		lives -= 1
-
 	if current_game:
+		current_game.timer.stop()
+		await get_tree().create_timer(current_game.post_game_time).timeout
+		
+		var mg_exit = MicroGameEvent.new(
+			game_selector.current_game, 
+			MicroGameEvent.StateChange.EXIT, 
+			MicroGameEvent.Outcome.WIN if win else MicroGameEvent.Outcome.WIN ,
+			MicroGameEvent.OutcomeReason.TIMEOUT if 
+				game_timed_out else MicroGameEvent.OutcomeReason.PLAYER_ACTION
+		)
+		
+		if win:
+			await exit_game_win_transtion.execute(make_transition_context(), mg_exit)
+			await score_up_transtion.execute(
+				make_transition_context(), 
+				IncreaseScoreEvent.new(score + 1, score))
+			score += 1
+		else:
+			await exit_game_lose_transtion.execute(make_transition_context(), mg_exit)
+			await lives_down_transtion.execute(
+				make_transition_context(), 
+				DecreaseLivesEvent.new(lives - 1, lives))
+			lives -= 1
+			
 		unload_game()
-
+		
 	play_next_game()
 
 func unload_game():
@@ -168,3 +200,12 @@ func play_next_game():
 	else:
 		setup_micro_game(micro_game, game_selector.current_game)
 		start_game()
+
+func make_transition_context():
+	var context = TransitionContext.new()
+	context.root = self
+	context.background_layer = $Background
+	context.game_layer = $GameLayer
+	context.overlay_layer = $TransitionOverlay
+	context.music_player = $MusicPlayer
+	return context

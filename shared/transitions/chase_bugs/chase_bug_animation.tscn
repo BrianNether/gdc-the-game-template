@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://dai8wx340syh6"]
+
+[ext_resource type="Script" uid="uid://bmn60xfv32213" path="res://shared/transitions/chase_bugs/chase_bug_animation.gd" id="1_f4tse"]
+[ext_resource type="Texture2D" uid="uid://chqjek5gprmyt" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (1).png" id="1_nyxmy"]
+[ext_resource type="Texture2D" uid="uid://cliys4402dd3i" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (2).png" id="2_f4tse"]
+[ext_resource type="Texture2D" uid="uid://cvh3jjamhe31" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (3).png" id="3_44stg"]
+[ext_resource type="Texture2D" uid="uid://bpox6gw3hclb5" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (4).png" id="4_8sd3e"]
+[ext_resource type="Texture2D" uid="uid://jr1nm6l2c0gr" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (5).png" id="5_sdoom"]
+[ext_resource type="Texture2D" uid="uid://bsws70b0cbslr" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (6).png" id="6_x8acv"]
+[ext_resource type="Texture2D" uid="uid://c8iiip1yndvl5" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (7).png" id="7_l3884"]
+[ext_resource type="Texture2D" uid="uid://ds7bkk4bnw2q6" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (8).png" id="8_rbbl7"]
+[ext_resource type="Texture2D" uid="uid://kqss2ur7pmir" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (9).png" id="9_1s1ko"]
+[ext_resource type="Texture2D" uid="uid://c1qjr3gm8xbwh" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (10).png" id="10_lse0v"]
+[ext_resource type="Texture2D" uid="uid://cekxig8dul6bu" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (11).png" id="11_3bcwt"]
+[ext_resource type="Texture2D" uid="uid://cu3mh5ovh36vf" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (12).png" id="12_88ged"]
+[ext_resource type="Texture2D" uid="uid://ddoxu2k8kvhqu" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (13).png" id="13_v1ahs"]
+[ext_resource type="Texture2D" uid="uid://bi2mt2c6wjqfa" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (14).png" id="14_85ay1"]
+[ext_resource type="Texture2D" uid="uid://m6a4et2a7t5p" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (15).png" id="15_spiy2"]
+[ext_resource type="Texture2D" uid="uid://bxgor0xdneark" path="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (16).png" id="16_jw08f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2u8au"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_nyxmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f4tse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_44stg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8sd3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sdoom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x8acv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l3884")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rbbl7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1s1ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lse0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3bcwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_88ged")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v1ahs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_85ay1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_spiy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jw08f")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_f4tse"]
+length = 0.23333333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1500, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1500.0]
+}
+
+[sub_resource type="Animation" id="Animation_nyxmy"]
+resource_name = "play"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 2),
+"points": PackedFloat32Array(1212.5605, -0.19799015, 1014.4189, 0.1, -512.3583, 92.62131, -0.04111668, -24.825983, 0.025597751, 15.455755, 142.3964, -0.13333333, -6.955755, 0.03333342, 74.66261, -1276.1934, -0.06666672, 647.07605, 0, 0),
+"times": PackedFloat32Array(0.41, 0.73333335, 1.0333333, 1.5)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, -850.0, -1500.0]
+}
+
+[sub_resource type="Animation" id="Animation_sdoom"]
+resource_name = "exit"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1212.5605, -0.19799015, 1014.4189, 0.1, -512.3583, 92.62131, -0.04111668, -24.825983, 0.025597751, 15.455755, 142.3964, -0.13333333, -6.955755, 0.03333342, 74.66261, -1276.1934, -0.06666672, 647.07605, 0, 0),
+"times": PackedFloat32Array(0.41, 0.73333335, 1.0333333, 1.5)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1500.0, 500.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f4tse"]
+_data = {
+&"RESET": SubResource("Animation_f4tse"),
+&"enter": SubResource("Animation_nyxmy"),
+&"exit": SubResource("Animation_sdoom")
+}
+
+[node name="ChaseBugAnimation" type="Control" unique_id=69050467]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f4tse")
+
+[node name="background" type="ColorRect" parent="." unique_id=1592702559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1500.0
+offset_right = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.96862745, 0.91764706, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2023167301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1500.0
+offset_right = 1499.9951
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13725491, 0.17254902, 0.3882353, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1630803433]
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_2u8au")
+frame = 17
+frame_progress = 1.0
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=827154629]
+libraries/ = SubResource("AnimationLibrary_f4tse")

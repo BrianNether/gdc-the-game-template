@@ -1,0 +1,540 @@
+[gd_scene format=3 uid="uid://dmreob4nvs5y1"]
+
+[ext_resource type="Script" uid="uid://blayb6jbwkmgo" path="res://shared/transitions/default_transition_pack/animations.gd" id="1_pyg55"]
+[ext_resource type="Texture2D" uid="uid://6lyds2bjxcy4" path="res://main/assets/lives/Untitled_Artwork-2 29.png" id="2_vewpx"]
+[ext_resource type="Texture2D" uid="uid://5ylqjaipp3no" path="res://main/assets/lives/Untitled_Artwork-4 11.png" id="3_v3fir"]
+[ext_resource type="Texture2D" uid="uid://d0kfrycgfiece" path="res://main/assets/lives/Untitled_Artwork-5 8.png" id="4_jpmwm"]
+[ext_resource type="Texture2D" uid="uid://bwj1icwaji6lt" path="res://main/assets/lives/complete.png" id="5_6httv"]
+[ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="6_mnsx2"]
+[ext_resource type="Texture2D" uid="uid://kpfddjgqx7t3" path="res://main/assets/controls/Untitled_Artwork-4 11.png" id="7_i6rqs"]
+[ext_resource type="Texture2D" uid="uid://bvwq01bppipqr" path="res://main/assets/controls/Untitled_Artwork-1 30.png" id="8_uicx5"]
+[ext_resource type="Texture2D" uid="uid://cn1tkmb33p7cg" path="res://main/assets/controls/Untitled_Artwork-3 15.png" id="9_fcblp"]
+[ext_resource type="Texture2D" uid="uid://cg56y78outury" path="res://main/assets/controls/Untitled_Artwork-2 29.png" id="10_v1e6l"]
+[ext_resource type="Script" uid="uid://bvevn42has1dp" path="res://main/screens/game/digits.gd" id="11_5vvuj"]
+[ext_resource type="PackedScene" uid="uid://vnnjwaveox7e" path="res://main/screens/game/digit.tscn" id="12_2q5qx"]
+[ext_resource type="Texture2D" uid="uid://co5kq317t2tu3" path="res://main/assets/digits/Frame 1.png" id="13_pknry"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fnicf"]
+font = ExtResource("6_mnsx2")
+font_size = 75
+
+[sub_resource type="GDScript" id="GDScript_bfuhu"]
+script/source = "extends Control
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_1sojv"]
+font = ExtResource("6_mnsx2")
+font_size = 100
+
+[sub_resource type="Animation" id="Animation_1sojv"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/score_display:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/score_display:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/score_display:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/MarginContainer/lives_display:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_5kiah"]
+resource_name = "start_bite"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/MarginContainer/lives_display:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.53, -0.25, 0, 0.13333334, 1.1347668, 2.43, -0.06666668, 1.5456843, 0, 0),
+"times": PackedFloat32Array(0, 0.23333333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.534, -0.14818364, -2.0231574, 0.1, 0.8905165, 2.43, -0.06666668, 1.8018768, 0, 0),
+"times": PackedFloat32Array(0, 0.23333333)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_lives_sprite"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jbgbe"]
+resource_name = "life_pop_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/MarginContainer/lives_display:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.23333333, 2.8223271, 2.5340672, -0.10000001, 0.7992661, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, -0.14818364, -2.0231574, 0.2, 2.730608, 2.5340672, -0.10000001, 0.81236887, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_tw08j"]
+resource_name = "life_pop_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/MarginContainer/lives_display:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(2.53, 0, 3.278776, 0, -2.1840875, 0, -0.06666666, 0.03144695, 0, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/MarginContainer/lives_display:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(2.53, 0, 3.278776, 0, -2.1447797, 0, -0.06666666, -0.020963952, 0, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+
+[sub_resource type="Animation" id="Animation_31j03"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_pa31v"]
+resource_name = "new_animation"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/score_display:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(1, 3, 2, 1),
+"points": PackedFloat32Array(-361, -0.0005, 0, 0.0005, 0, -294.89673, -0.06666666, -84.73758, 0.06666666, 84.73758, 298.26642, -0.06658496, 20.478046, 0.020409375, -6.2768555, 270.02054, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/score_display:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(59, 0, 0, 0, 0, 59, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/score_display:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s0qyw"]
+resource_name = "score_slide_out"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/score_display:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(270.021, -0.11425735, 415.96307, 0.2, -728.1161, -363.9422, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/score_display:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(59, -0.25, 0, 0.25, 0, 59, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/score_display:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0qyw"]
+_data = {
+&"RESET": SubResource("Animation_1sojv"),
+&"life_bite": SubResource("Animation_5kiah"),
+&"life_pop_in": SubResource("Animation_jbgbe"),
+&"life_pop_out": SubResource("Animation_tw08j"),
+&"new_animation": SubResource("Animation_31j03"),
+&"score_slide_in": SubResource("Animation_pa31v"),
+&"score_slide_out": SubResource("Animation_s0qyw")
+}
+
+[node name="TransitionOverlay" type="Control" unique_id=1815268038]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pyg55")
+life_frames = Array[Texture2D]([ExtResource("2_vewpx"), ExtResource("3_v3fir"), ExtResource("4_jpmwm"), ExtResource("5_6httv")])
+
+[node name="info_display" type="Control" parent="." unique_id=1021220466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="info_display" unique_id=642124653]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -136.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="PanelContainer" parent="info_display/CenterContainer" unique_id=1210651284]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="info_display/CenterContainer/CenterContainer" unique_id=1008077026]
+layout_mode = 2
+color = Color(0.13725491, 0.17254902, 0.3882353, 1)
+
+[node name="Container" type="MarginContainer" parent="info_display/CenterContainer/CenterContainer" unique_id=1579707721]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="description" type="Label" parent="info_display/CenterContainer/CenterContainer/Container" unique_id=110542734]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Do the thing!"
+label_settings = SubResource("LabelSettings_fnicf")
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="info_display" unique_id=2041223554]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 85.0
+offset_right = 20.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mouse_only_input" type="CenterContainer" parent="info_display/Control" unique_id=1389424937]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="mouse_icon" type="TextureRect" parent="info_display/Control/mouse_only_input" unique_id=2138306912]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_i6rqs")
+
+[node name="keyboard_only_input" type="CenterContainer" parent="info_display/Control" unique_id=1778047681]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="wasd_icon" type="TextureRect" parent="info_display/Control/keyboard_only_input" unique_id=1486671310]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("8_uicx5")
+
+[node name="keyboard_and_mouse_input" type="CenterContainer" parent="info_display/Control" unique_id=1176677580]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -150.0
+offset_right = 409.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="info_display/Control/keyboard_and_mouse_input" unique_id=373955215]
+layout_mode = 2
+
+[node name="keyboard_icon" type="TextureRect" parent="info_display/Control/keyboard_and_mouse_input/HBoxContainer" unique_id=1646698012]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_fcblp")
+
+[node name="plus_icon" type="TextureRect" parent="info_display/Control/keyboard_and_mouse_input/HBoxContainer" unique_id=268269126]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v1e6l")
+stretch_mode = 2
+
+[node name="mouse_icon" type="TextureRect" parent="info_display/Control/keyboard_and_mouse_input/HBoxContainer" unique_id=1086207895]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_i6rqs")
+
+[node name="Control" type="Control" parent="." unique_id=195502839]
+anchors_preset = 0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 10.0
+
+[node name="score_display" type="Control" parent="Control" unique_id=1199429348]
+visible = false
+anchors_preset = 0
+script = SubResource("GDScript_bfuhu")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/score_display" unique_id=1161335720]
+layout_mode = 0
+offset_left = -347.0
+offset_top = -8.0
+offset_right = 158.0
+offset_bottom = 107.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 20
+
+[node name="ColorRect" type="ColorRect" parent="Control/score_display/MarginContainer" unique_id=236971675]
+layout_mode = 2
+color = Color(0.13725491, 0.17254902, 0.3882353, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/score_display/MarginContainer" unique_id=154955702]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/score_display/MarginContainer/MarginContainer" unique_id=1749658505]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Control/score_display/MarginContainer/MarginContainer/HBoxContainer" unique_id=1564810376]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_1sojv")
+horizontal_alignment = 2
+
+[node name="score_number" type="HBoxContainer" parent="Control/score_display/MarginContainer/MarginContainer/HBoxContainer" unique_id=1239303706]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -15
+script = ExtResource("11_5vvuj")
+
+[node name="digit" parent="Control/score_display/MarginContainer/MarginContainer/HBoxContainer/score_number" unique_id=850420 instance=ExtResource("12_2q5qx")]
+layout_mode = 2
+
+[node name="digit2" type="TextureRect" parent="Control/score_display/MarginContainer/MarginContainer/HBoxContainer/score_number" unique_id=1383404822]
+layout_mode = 2
+texture = ExtResource("13_pknry")
+
+[node name="digit3" type="TextureRect" parent="Control/score_display/MarginContainer/MarginContainer/HBoxContainer/score_number" unique_id=570515342]
+layout_mode = 2
+texture = ExtResource("13_pknry")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1063713198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=732561961]
+layout_mode = 2
+
+[node name="lives_display" type="Sprite2D" parent="CenterContainer/MarginContainer" unique_id=805104113]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_jpmwm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=962814632]
+libraries/ = SubResource("AnimationLibrary_s0qyw")

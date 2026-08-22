@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://2v8m4ue56hee"]
+
+[ext_resource type="PackedScene" uid="uid://dai8wx340syh6" path="res://shared/transitions/chase_bugs/chase_bug_animation.tscn" id="1_h2g6l"]
+[ext_resource type="Script" uid="uid://dppleugc46bfp" path="res://shared/transitions/chase_bugs/chase_bug_transition.gd" id="2_h65nk"]
+
+[resource]
+script = ExtResource("2_h65nk")
+metadata/_custom_type_script = "uid://d658l3eo5yb0"

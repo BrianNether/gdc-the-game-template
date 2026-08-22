@@ -22,6 +22,11 @@ var _clock_default_color: Color
 
 
 func _ready() -> void:
+	
+	var ui := get_node_or_null("UI")
+	if ui:
+		ui.visible = false
+	
 	set_process(false)
 	_setup_cursors()
 	_add_black_backdrop()
@@ -51,6 +56,10 @@ func _add_black_backdrop() -> void:
 
 
 func _on_start() -> void:
+	
+	var ui := get_node_or_null("UI")
+	if ui:
+		ui.visible = true
 	elapsed_time = 0.0
 	seconds_ticked = 0
 	countdown_active = true

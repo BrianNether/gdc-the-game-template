@@ -80,6 +80,7 @@ control_format = 0
 lose_on_timeout = true
 timer_type = 0
 game_duration = 10.0
+post_game_time = 1.75
 
 [node name="UI" type="Control" parent="." unique_id=1820372352]
 layout_mode = 3
