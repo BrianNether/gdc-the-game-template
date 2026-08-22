@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://caclubtwd4b58"]
+
+[ext_resource type="Script" uid="uid://ce6kkendkl5sg" path="res://micro_games/find_a_seat/find_a_seat.gd" id="1_pf5fe"]
+[ext_resource type="Texture2D" uid="uid://d1ujjvhdvxtrn" path="res://micro_games/find_a_seat/assets/background.png" id="2_1qgii"]
+[ext_resource type="Texture2D" uid="uid://c7glg545blnbu" path="res://micro_games/find_a_seat/assets/seat_base.png" id="3_wafv2"]
+
+[node name="FindASeat" type="Node2D" unique_id=1748513247]
+script = ExtResource("1_pf5fe")
+control_format = 0
+lose_on_timeout = true
+post_game_time = 2.0
+metadata/_custom_type_script = "uid://c6chk3rdyriqb"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=472904460]
+texture = ExtResource("2_1qgii")
+centered = false
+
+[node name="Seats" type="Node2D" parent="." unique_id=1200069285]
+
+[node name="Seat" type="Sprite2D" parent="Seats" unique_id=1317841657]
+position = Vector2(80, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat2" type="Sprite2D" parent="Seats" unique_id=970584123]
+position = Vector2(120, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat3" type="Sprite2D" parent="Seats" unique_id=383089335]
+position = Vector2(160, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat4" type="Sprite2D" parent="Seats" unique_id=1276064155]
+position = Vector2(200, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat5" type="Sprite2D" parent="Seats" unique_id=705058071]
+position = Vector2(240, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat6" type="Sprite2D" parent="Seats" unique_id=505541700]
+position = Vector2(80, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat7" type="Sprite2D" parent="Seats" unique_id=1749147048]
+position = Vector2(120, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat8" type="Sprite2D" parent="Seats" unique_id=325531649]
+position = Vector2(160, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat9" type="Sprite2D" parent="Seats" unique_id=56317974]
+position = Vector2(200, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat10" type="Sprite2D" parent="Seats" unique_id=1433240488]
+position = Vector2(240, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat11" type="Sprite2D" parent="Seats" unique_id=210891127]
+position = Vector2(80, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat12" type="Sprite2D" parent="Seats" unique_id=415719125]
+position = Vector2(120, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat13" type="Sprite2D" parent="Seats" unique_id=1278920528]
+position = Vector2(160, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat14" type="Sprite2D" parent="Seats" unique_id=1965772270]
+position = Vector2(200, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat15" type="Sprite2D" parent="Seats" unique_id=927461589]
+position = Vector2(240, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat16" type="Sprite2D" parent="Seats" unique_id=1741178055]
+position = Vector2(80, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat17" type="Sprite2D" parent="Seats" unique_id=1378232828]
+position = Vector2(120, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat18" type="Sprite2D" parent="Seats" unique_id=1135223477]
+position = Vector2(160, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat19" type="Sprite2D" parent="Seats" unique_id=2023779007]
+position = Vector2(200, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat20" type="Sprite2D" parent="Seats" unique_id=985199818]
+position = Vector2(240, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat21" type="Sprite2D" parent="Seats" unique_id=1957479942]
+position = Vector2(80, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat22" type="Sprite2D" parent="Seats" unique_id=368986145]
+position = Vector2(120, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat23" type="Sprite2D" parent="Seats" unique_id=854614175]
+position = Vector2(160, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat24" type="Sprite2D" parent="Seats" unique_id=877330842]
+position = Vector2(200, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat25" type="Sprite2D" parent="Seats" unique_id=564919300]
+position = Vector2(240, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat26" type="Sprite2D" parent="Seats" unique_id=226076998]
+position = Vector2(400, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat27" type="Sprite2D" parent="Seats" unique_id=175270078]
+position = Vector2(440, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat28" type="Sprite2D" parent="Seats" unique_id=103525361]
+position = Vector2(480, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat29" type="Sprite2D" parent="Seats" unique_id=1712265425]
+position = Vector2(520, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat30" type="Sprite2D" parent="Seats" unique_id=1138685261]
+position = Vector2(560, 144)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat31" type="Sprite2D" parent="Seats" unique_id=2040419211]
+position = Vector2(400, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat32" type="Sprite2D" parent="Seats" unique_id=1476481825]
+position = Vector2(440, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat33" type="Sprite2D" parent="Seats" unique_id=633433357]
+position = Vector2(480, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat34" type="Sprite2D" parent="Seats" unique_id=650823712]
+position = Vector2(520, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat35" type="Sprite2D" parent="Seats" unique_id=1411228612]
+position = Vector2(560, 192)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat36" type="Sprite2D" parent="Seats" unique_id=535062635]
+position = Vector2(400, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat37" type="Sprite2D" parent="Seats" unique_id=1997879058]
+position = Vector2(440, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat38" type="Sprite2D" parent="Seats" unique_id=852395159]
+position = Vector2(480, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat39" type="Sprite2D" parent="Seats" unique_id=1635958330]
+position = Vector2(520, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat40" type="Sprite2D" parent="Seats" unique_id=1690618452]
+position = Vector2(560, 240)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat41" type="Sprite2D" parent="Seats" unique_id=859549063]
+position = Vector2(400, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat42" type="Sprite2D" parent="Seats" unique_id=1451506095]
+position = Vector2(440, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat43" type="Sprite2D" parent="Seats" unique_id=1855378083]
+position = Vector2(480, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat44" type="Sprite2D" parent="Seats" unique_id=450875567]
+position = Vector2(520, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat45" type="Sprite2D" parent="Seats" unique_id=857182799]
+position = Vector2(560, 288)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat46" type="Sprite2D" parent="Seats" unique_id=618510927]
+position = Vector2(400, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat47" type="Sprite2D" parent="Seats" unique_id=90338315]
+position = Vector2(440, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat48" type="Sprite2D" parent="Seats" unique_id=809992303]
+position = Vector2(480, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat49" type="Sprite2D" parent="Seats" unique_id=1751739827]
+position = Vector2(520, 336)
+texture = ExtResource("3_wafv2")
+
+[node name="Seat50" type="Sprite2D" parent="Seats" unique_id=1575043538]
+position = Vector2(560, 336)
+texture = ExtResource("3_wafv2")

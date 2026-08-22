@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MicroGameInfo" format=3 uid="uid://m0r2l5w0awp6"]
+
+[ext_resource type="PackedScene" uid="uid://caclubtwd4b58" path="res://micro_games/find_a_seat/find_a_seat.tscn" id="1_84shh"]
+[ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="2_6w31p"]
+
+[resource]
+script = ExtResource("2_6w31p")
+title = "Find a Seat"
+authors = "BrianMakesStuff"
+description = "Find an empty seat in a crowded lecture hall."
+game_scene = ExtResource("1_84shh")
+width = 640
+height = 360
+metadata/_custom_type_script = "uid://dciiueikp53p7"

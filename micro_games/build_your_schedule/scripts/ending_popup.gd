@@ -13,7 +13,7 @@ func appear(win: bool) -> void:
 		$Text.text = "Thank you for taking the time to choose your courses with thought and care."
 	else:
 		$Lose.play()
-		var insult: String = ["bozo", "dingus", "bud", "buddy", "loser", "slowpoke"].pick_random()
+		var insult: String = ["bozo", "dingus", "bud", "buddy", "loser", "slowpoke", "little buddy", "big dog", "nincompoop", "ya silly goose"].pick_random()
 		$Header.text = "ERROR"
 		$Text.text = "This page is no longer available.\nBetter luck next semester, %s." % insult
 	background.visible = true
