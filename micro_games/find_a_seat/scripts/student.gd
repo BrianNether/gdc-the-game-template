@@ -15,7 +15,7 @@ var clothes_color: Color
 
 const FRAME_COUNT = 3
 
-const MAX_SPECIAL_COUNT = 5
+const MAX_SPECIAL_COUNT = 3
 static var special_count = MAX_SPECIAL_COUNT
 static var used_special_heads: Array[String]
 

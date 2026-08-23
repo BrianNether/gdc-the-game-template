@@ -292,7 +292,6 @@ script = ExtResource("1_pf5fe")
 control_format = 0
 lose_on_timeout = true
 timer_type = 2
-post_game_time = 2.0
 metadata/_custom_type_script = "uid://c6chk3rdyriqb"
 
 [node name="ClickSeat" type="AudioStreamPlayer" parent="." unique_id=2070288634]

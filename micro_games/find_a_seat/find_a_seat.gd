@@ -7,7 +7,6 @@ static var free_seats: int = 3
 var over = false
 
 # TODO
-# Sound effects
 # Easter egg characters
 
 func _ready() -> void:
@@ -83,9 +82,10 @@ func fail() -> void:
 	await get_tree().create_timer(0.5).timeout
 	$DevChan.visible = false
 	$DevChanDespair.visible = true
-	#await get_tree().create_timer(0.1).timeout
 	$Spotlight.visible = true
 	$SadPiano.play()
+	pause_music.emit()
+	$SadPiano.finished.connect(resume_music.emit)
 	
 static func _on_screen_exited(screen: GameManager.Screen) -> void:
 	if screen == GameManager.Screen.Game:
