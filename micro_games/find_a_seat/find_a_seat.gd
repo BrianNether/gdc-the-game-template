@@ -6,9 +6,6 @@ static var free_seats: int = 3
 
 var over = false
 
-# TODO
-# Easter egg characters
-
 func _ready() -> void:
 	FindASeatStudent.reset_appearance_pool()
 	$Timer.frame = 10 - game_duration
@@ -73,6 +70,12 @@ func seat_found(seat: FindASeatEmptySeat) -> void:
 	var midpoint := Vector2($DevChan.global_position.x, seat.global_position.y)
 	await dev_chan_hop_to(midpoint)
 	await dev_chan_hop_to(seat.global_position)
+	$FinalHop.play()
+	var hop_tween := create_tween().set_trans(Tween.TRANS_QUAD)
+	hop_tween.set_ease(Tween.EASE_OUT).tween_property($DevChan/Body, "position", Vector2.UP * 32, 0.1)
+	hop_tween.set_ease(Tween.EASE_IN).tween_property($DevChan/Body, "position", Vector2.ZERO, 0.1)
+	hop_tween.tween_property($DevChan, "z_index", 0, 0)
+	await hop_tween.finished
 	#tween.tween_property($DevChan, "global_position", midpoint, $DevChan.global_position.distance_to(midpoint) / SPEED)
 	#tween.tween_property($DevChan, "global_position", seat.global_position, midpoint.distance_to(seat.global_position) / SPEED)
 		

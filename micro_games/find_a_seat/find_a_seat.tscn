@@ -300,6 +300,10 @@ stream = ExtResource("2_yoyki")
 [node name="Hop" type="AudioStreamPlayer" parent="." unique_id=776563874]
 stream = ExtResource("3_qwi1b")
 
+[node name="FinalHop" type="AudioStreamPlayer" parent="." unique_id=173245971]
+stream = ExtResource("3_qwi1b")
+pitch_scale = 1.2
+
 [node name="SadPiano" type="AudioStreamPlayer" parent="." unique_id=1876002999]
 stream = ExtResource("4_qwi1b")
 
@@ -538,6 +542,7 @@ position = Vector2(560, 336)
 texture = ExtResource("3_wafv2")
 
 [node name="DevChan" type="Node2D" parent="." unique_id=1482371265]
+z_index = 2
 position = Vector2(320, 88)
 
 [node name="Body" type="AnimatedSprite2D" parent="DevChan" unique_id=385033702]

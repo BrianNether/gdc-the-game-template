@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="1_skbrk"]
 [ext_resource type="Resource" uid="uid://m0r2l5w0awp6" path="res://micro_games/find_a_seat/find_a_seat.tres" id="2_skbrk"]
 [ext_resource type="Script" uid="uid://8d8dt0a71t3a" path="res://main/micro_game_pack.gd" id="3_5eyod"]
+[ext_resource type="Resource" uid="uid://u63sj0cb0np6" path="res://micro_games/build_your_schedule/build_your_schedule.tres" id="3_rcab0"]
 
 [resource]
 script = ExtResource("3_5eyod")
-micro_games = Array[ExtResource("1_skbrk")]([ExtResource("2_skbrk")])
+micro_games = Array[ExtResource("1_skbrk")]([ExtResource("2_skbrk"), ExtResource("3_rcab0")])
 metadata/_custom_type_script = "uid://8d8dt0a71t3a"
