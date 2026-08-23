@@ -22,8 +22,12 @@ var _clock_default_color: Color
 
 
 func _ready() -> void:
+	
+	var ui := get_node_or_null("UI")
+	if ui:
+		ui.visible = false
+	
 	set_process(false)
-	_setup_cursors()
 	_add_black_backdrop()
 	# so the urgent-red pulse can restore it later instead of falling back to theme white
 	_clock_default_color = clock_label.get_theme_color("font_color")
@@ -51,6 +55,11 @@ func _add_black_backdrop() -> void:
 
 
 func _on_start() -> void:
+	
+	_setup_cursors()
+	var ui := get_node_or_null("UI")
+	if ui:
+		ui.visible = true
 	elapsed_time = 0.0
 	seconds_ticked = 0
 	countdown_active = true
@@ -136,6 +145,7 @@ func _on_win() -> void:
 
 
 func _on_lose() -> void:
+	pause_music.emit()
 	_end_round()
 	_show_end_feedback(false)
 

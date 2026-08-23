@@ -1,4 +1,4 @@
-extends Control
+extends HBoxContainer
 class_name DigitDisplay 
 
 var digits : Array[Texture2D] = [

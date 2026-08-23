@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgl5ptloxlhfc"
-path="res://.godot/imported/title_screen_button.png-ad329fa2abdf06c3925982793a320d12.ctex"
+uid="uid://jr1nm6l2c0gr"
+path="res://.godot/imported/lose_animation_ (5).png-ca1ab4cf5946161e8789a8898f0c315f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/screens/title_screen/title_screen_button.png"
-dest_files=["res://.godot/imported/title_screen_button.png-ad329fa2abdf06c3925982793a320d12.ctex"]
+source_file="res://shared/transitions/chase_bugs/lose 1/lose_animation_ (5).png"
+dest_files=["res://.godot/imported/lose_animation_ (5).png-ca1ab4cf5946161e8789a8898f0c315f.ctex"]
 
 [params]
 

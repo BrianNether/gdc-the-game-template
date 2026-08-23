@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu1kj17y4mubj"
-path="res://.godot/imported/title screen.png-9b3b77477a528c20d6afe011d79bf0bf.ctex"
+uid="uid://bjcse72h1plmj"
+path="res://.godot/imported/enter-button.png-2f2dc439eeb17ede73784a5016a714be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/screens/title_screen/title screen.png"
-dest_files=["res://.godot/imported/title screen.png-9b3b77477a528c20d6afe011d79bf0bf.ctex"]
+source_file="res://main/screens/title_screen/enter-button.png"
+dest_files=["res://.godot/imported/enter-button.png-2f2dc439eeb17ede73784a5016a714be.ctex"]
 
 [params]
 

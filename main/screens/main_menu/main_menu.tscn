@@ -1,7 +1,61 @@
 [gd_scene format=3 uid="uid://bvd8iqr5v1mwb"]
 
-[ext_resource type="Script" uid="uid://dtyvffw85vxrq" path="res://main/screens/screen_root.gd" id="1_ct82h"]
+[ext_resource type="Script" uid="uid://dt2ujqkwk8cgl" path="res://main/screens/main_menu/main_menu.gd" id="1_1nxtc"]
 [ext_resource type="Script" uid="uid://d1l1c5xva3lcu" path="res://main/screens/level_switch_button.gd" id="1_yd35k"]
+[ext_resource type="Texture2D" uid="uid://dyhanlqpwqoed" path="res://main/assets/main menu devchan/Untitled_Artwork-1 34.png" id="2_2u7da"]
+[ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="3_aqqjb"]
+[ext_resource type="Texture2D" uid="uid://d2i2dolexucs" path="res://main/assets/main menu devchan/Untitled_Artwork-2 32.png" id="4_1nxtc"]
+[ext_resource type="Theme" uid="uid://d1iskwj0kgqo8" path="res://main/themes/menu_theme.tres" id="4_tsh8g"]
+[ext_resource type="Texture2D" uid="uid://l3h0m6fum613" path="res://main/assets/main menu devchan/Untitled_Artwork-3 18.png" id="5_aqqjb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tsh8g"]
+font = ExtResource("3_aqqjb")
+font_size = 40
+font_color = Color(0, 0.22745098, 0.25490198, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jp85e"]
+line_spacing = 0.0
+font = ExtResource("3_aqqjb")
+font_size = 120
+font_color = Color(0, 0.22745098, 0.25490198, 1)
+
+[sub_resource type="Animation" id="Animation_tsh8g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dev_chan:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_2u7da")]
+}
+
+[sub_resource type="Animation" id="Animation_jp85e"]
+resource_name = "default"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dev_chan:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_2u7da"), ExtResource("4_1nxtc"), ExtResource("5_aqqjb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spauq"]
+_data = {
+&"RESET": SubResource("Animation_tsh8g"),
+&"default": SubResource("Animation_jp85e")
+}
 
 [node name="Main Menu" type="Control" unique_id=546908478]
 layout_mode = 3
@@ -12,29 +66,115 @@ offset_left = 1.005
 offset_right = 1.0050049
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ct82h")
-this_screen = 1
+script = ExtResource("1_1nxtc")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1546826949]
+[node name="dev_chan" type="TextureRect" parent="." unique_id=1877621570]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_2u7da")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=348088128]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1739062858]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -586.005
+offset_right = -57.005005
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="GoToLevelSelect" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2054199560]
+[node name="column" type="VBoxContainer" parent="MarginContainer" unique_id=348088128]
 layout_mode = 2
-text = "Level Select"
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="title" type="VBoxContainer" parent="MarginContainer/column" unique_id=149555556]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = -10
+
+[node name="Label" type="Label" parent="MarginContainer/column/title" unique_id=1310691033]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "UW GAME DEV CLUB"
+label_settings = SubResource("LabelSettings_tsh8g")
+
+[node name="Label2" type="Label" parent="MarginContainer/column/title" unique_id=1826183704]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "THE GAME"
+label_settings = SubResource("LabelSettings_jp85e")
+
+[node name="Label3" type="Label" parent="MarginContainer/column/title" unique_id=1186450599]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "GAME"
+label_settings = SubResource("LabelSettings_jp85e")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/column" unique_id=2121990068]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="options" type="VBoxContainer" parent="MarginContainer/column/MarginContainer" unique_id=251001082]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="GoToGame" type="Button" parent="MarginContainer/column/MarginContainer/options" unique_id=253436785]
+layout_mode = 2
+theme = ExtResource("4_tsh8g")
+theme_type_variation = &"FlatButton"
+text = "START
+
+"
+flat = true
+alignment = 0
+script = ExtResource("1_yd35k")
+next_screen = 3
+
+[node name="GoToLevelSelect" type="Button" parent="MarginContainer/column/MarginContainer/options" unique_id=2054199560]
+layout_mode = 2
+theme = ExtResource("4_tsh8g")
+theme_type_variation = &"FlatButton"
+text = "LEVEL SELECT
+"
+flat = true
+alignment = 0
 script = ExtResource("1_yd35k")
 next_screen = 2
 
-[node name="GoToCredits" type="Button" parent="CenterContainer/VBoxContainer" unique_id=253436785]
+[node name="GoToLeaderboard" type="Button" parent="MarginContainer/column/MarginContainer/options" unique_id=1933501354]
 layout_mode = 2
-text = "Credits
+theme = ExtResource("4_tsh8g")
+theme_type_variation = &"FlatButton"
+text = "LEADERBOARD
+
 "
+flat = true
+alignment = 0
+script = ExtResource("1_yd35k")
+next_screen = 5
+
+[node name="GoToCredits3" type="Button" parent="MarginContainer/column/MarginContainer/options" unique_id=1002012489]
+layout_mode = 2
+theme = ExtResource("4_tsh8g")
+theme_type_variation = &"FlatButton"
+text = "CREDITS
+
+"
+flat = true
+alignment = 0
 script = ExtResource("1_yd35k")
 next_screen = 4
+
+[node name="background_animation" type="AnimationPlayer" parent="." unique_id=1945645526]
+libraries/ = SubResource("AnimationLibrary_spauq")

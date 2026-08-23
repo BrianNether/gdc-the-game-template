@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://buprnem5q1hbr"]
+
+[ext_resource type="PackedScene" uid="uid://dmreob4nvs5y1" path="res://shared/transitions/default_transition_pack/animations.tscn" id="1_lc5h5"]
+[ext_resource type="Script" uid="uid://cckr77gsqjpf7" path="res://shared/transitions/default_transition_pack/default_transition_pack.gd" id="2_budwf"]
+
+[resource]
+script = ExtResource("2_budwf")
+metadata/_custom_type_script = "uid://d658l3eo5yb0"

@@ -12,8 +12,6 @@ class_name Main
 @export var game_screen : Control
 @export var end_screen : Control
 
-
-
 @onready var current_screen : GameManager.Screen = GameManager.Screen.Title
 
 func _ready() -> void:
@@ -27,9 +25,6 @@ func _ready() -> void:
 	GameManager.enter_screen.emit(current_screen)
 	
 	GameManager.request_transition_to.connect(change_screen)
-	
-	
-
 
 func change_screen(next : GameManager.Screen): 
 	if current_screen == next:

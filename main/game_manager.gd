@@ -16,8 +16,6 @@ signal refresh_ui(screen : Screen)
 signal enter_screen(screen : Screen)
 signal exit_screen(screen : Screen)
 
-
-
 func go_to_end():
 	request_transition_to.emit(Screen.MainMenu)
 
