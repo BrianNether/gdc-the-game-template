@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://ce6kkendkl5sg" path="res://micro_games/find_a_seat/find_a_seat.gd" id="1_pf5fe"]
 [ext_resource type="Texture2D" uid="uid://d1ujjvhdvxtrn" path="res://micro_games/find_a_seat/assets/background.png" id="2_1qgii"]
+[ext_resource type="AudioStream" uid="uid://di4iv4k3456qp" path="res://micro_games/find_a_seat/assets/sounds/click_seat.wav" id="2_yoyki"]
 [ext_resource type="Texture2D" uid="uid://dkqqu0rbf3dae" path="res://micro_games/find_a_seat/assets/body_devchan.png" id="3_7h2vx"]
 [ext_resource type="Texture2D" uid="uid://des4tfaqncc6u" path="res://micro_games/find_a_seat/assets/timer.png" id="3_88o3k"]
+[ext_resource type="AudioStream" uid="uid://d2lbtvuop5mtd" path="res://micro_games/find_a_seat/assets/sounds/hop.wav" id="3_qwi1b"]
+[ext_resource type="Texture2D" uid="uid://86xshg080lg3" path="res://micro_games/find_a_seat/assets/spotlight.png" id="3_vr6g2"]
 [ext_resource type="Texture2D" uid="uid://c7glg545blnbu" path="res://micro_games/find_a_seat/assets/seat_base.png" id="3_wafv2"]
 [ext_resource type="Texture2D" uid="uid://bqxr4y374w1bl" path="res://micro_games/find_a_seat/assets/head_devchan.png" id="4_88o3k"]
+[ext_resource type="AudioStream" uid="uid://xoj462tqp8ol" path="res://micro_games/find_a_seat/assets/sounds/sad_piano.wav" id="4_qwi1b"]
+[ext_resource type="Texture2D" uid="uid://qyrye7gtrfs5" path="res://micro_games/find_a_seat/assets/devchan_despair.png" id="5_58t33"]
 [ext_resource type="Texture2D" uid="uid://cum444x7ffg5l" path="res://micro_games/find_a_seat/assets/head_devchan_left.png" id="5_h0dgn"]
 [ext_resource type="Texture2D" uid="uid://u63ul3yf7500" path="res://micro_games/find_a_seat/assets/head_devchan_right.png" id="6_vr6g2"]
 [ext_resource type="Texture2D" uid="uid://b50friu2k7bsm" path="res://micro_games/find_a_seat/assets/sweat_drops.png" id="7_58t33"]
@@ -93,6 +98,35 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y573y"]
+atlas = ExtResource("5_58t33")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olygv"]
+atlas = ExtResource("5_58t33")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62kpi"]
+atlas = ExtResource("5_58t33")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wrkt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y573y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olygv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62kpi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yoyki"]
@@ -257,17 +291,50 @@ animations = [{
 script = ExtResource("1_pf5fe")
 control_format = 0
 lose_on_timeout = true
+timer_type = 2
 post_game_time = 2.0
 metadata/_custom_type_script = "uid://c6chk3rdyriqb"
+
+[node name="ClickSeat" type="AudioStreamPlayer" parent="." unique_id=2070288634]
+stream = ExtResource("2_yoyki")
+
+[node name="Hop" type="AudioStreamPlayer" parent="." unique_id=776563874]
+stream = ExtResource("3_qwi1b")
+
+[node name="SadPiano" type="AudioStreamPlayer" parent="." unique_id=1876002999]
+stream = ExtResource("4_qwi1b")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=472904460]
 texture = ExtResource("2_1qgii")
 centered = false
 
+[node name="Spotlight" type="CanvasGroup" parent="." unique_id=1334342656]
+visible = false
+modulate = Color(1, 1, 1, 0.7529412)
+z_index = 4
+
+[node name="ColorRect" type="ColorRect" parent="Spotlight" unique_id=840344092]
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Spotlight" type="Sprite2D" parent="Spotlight" unique_id=918629378]
+position = Vector2(320, 24)
+texture = ExtResource("3_vr6g2")
+
 [node name="Timer" type="AnimatedSprite2D" parent="." unique_id=295339661]
 position = Vector2(320, 32)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_y573y")
+
+[node name="DevChanDespair" type="AnimatedSprite2D" parent="." unique_id=722440577]
+visible = false
+z_index = 4
+position = Vector2(320, 96)
+sprite_frames = SubResource("SpriteFrames_wrkt4")
+autoplay = "default"
+frame_progress = 0.5015231
 
 [node name="Seats" type="Node2D" parent="." unique_id=1200069285]
 

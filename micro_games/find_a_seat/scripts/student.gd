@@ -6,7 +6,7 @@ const PATH_NORMIE_BODIES = "res://micro_games/find_a_seat/assets/bodies_normie"
 const PATH_SPECIAL_HEADS = "res://micro_games/find_a_seat/assets/heads_special"
 const PATH_SPECIAL_BODIES = "res://micro_games/find_a_seat/assets/bodies_special"
 
-const SKIN_COLORS = [Color("e9b5a3"), Color("f4d29c"), Color("fad6b8"), Color("dba463"), Color("bb7547"), Color("71413b"), Color("391d19")]
+const SKIN_COLORS = [Color("f4d29c"), Color("fad6b8"), Color("dba463"), Color("f4d29c"), Color("fad6b8"), Color("dba463"), Color("bb7547"), Color("71413b"), Color("391d19")]
 const HAIR_COLORS = [Color("242234"), Color("71413b"), Color("fabf5f"), Color("b55c2f")]
 const CLOTHES_COLORS = [Color("e3e6ff"), Color("242234"), Color("71413b"), Color("285cc4"), Color("f9a31b"), Color("1a7a3e"), Color("bc4a9b"), Color("9e2c34")]
 var skin_color: Color

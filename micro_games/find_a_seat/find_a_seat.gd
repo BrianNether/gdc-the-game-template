@@ -4,27 +4,30 @@ class_name FindASeat
 static var hook_installed := false
 static var free_seats: int = 3
 
-var won = false
+var over = false
 
 # TODO
-# 7-segment timer
-# Dev-chan collapses in despair when failing
 # Sound effects
 # Easter egg characters
 
 func _ready() -> void:
 	FindASeatStudent.reset_appearance_pool()
 	$Timer.frame = 10 - game_duration
-	start.connect(_on_start)
+	start.connect(on_start)
+	lose.connect(fail)
 	initialize_seats()
 	initialize_students()
 	if not hook_installed:
 		hook_installed = true
 		GameManager.exit_screen.connect(_on_screen_exited)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if is_testing(): on_start()
 		
-func _on_start() -> void:
+func on_start() -> void:
 	$Timer.play()
+	
+func is_testing() -> bool:
+	return get_parent() == get_tree().root
 	
 func initialize_seats() -> void:
 	for seat: Sprite2D in $Seats.get_children():
@@ -52,6 +55,7 @@ func dev_chan_hop_to(end_point: Vector2) -> void:
 	var hops: int = floor(start_point.distance_to(end_point) / HOP_DISTANCE)
 	var hop_distance: float = start_point.distance_to(end_point) / hops
 	for i in range(hops):
+		$Hop.play()
 		var move_tween := create_tween()
 		var hop_tween := create_tween().set_trans(Tween.TRANS_QUAD)
 		move_tween.tween_property($DevChan, "global_position", start_point + start_point.direction_to(end_point) * hop_distance * (i + 1), 0.2)
@@ -60,8 +64,11 @@ func dev_chan_hop_to(end_point: Vector2) -> void:
 		await move_tween.finished
 	
 func seat_found(seat: FindASeatEmptySeat) -> void:
-	if won: return
-	won = true
+	if over: return
+	over = true
+	win.emit()
+	$Timer.pause()
+	$ClickSeat.play()
 	$DevChan/Body/Head.play("default")
 	$DevChan/Body/Head/Sweat.visible = false
 	var midpoint := Vector2($DevChan.global_position.x, seat.global_position.y)
@@ -70,6 +77,16 @@ func seat_found(seat: FindASeatEmptySeat) -> void:
 	#tween.tween_property($DevChan, "global_position", midpoint, $DevChan.global_position.distance_to(midpoint) / SPEED)
 	#tween.tween_property($DevChan, "global_position", seat.global_position, midpoint.distance_to(seat.global_position) / SPEED)
 		
+func fail() -> void:
+	if over: return
+	over = true
+	await get_tree().create_timer(0.5).timeout
+	$DevChan.visible = false
+	$DevChanDespair.visible = true
+	#await get_tree().create_timer(0.1).timeout
+	$Spotlight.visible = true
+	$SadPiano.play()
+	
 static func _on_screen_exited(screen: GameManager.Screen) -> void:
 	if screen == GameManager.Screen.Game:
 		free_seats = 3

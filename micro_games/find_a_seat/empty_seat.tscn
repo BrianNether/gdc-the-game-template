@@ -2,11 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cao0vissjt8uy" path="res://micro_games/find_a_seat/scripts/empty_seat.gd" id="1_nf35h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf35h"]
-size = Vector2(48, 64)
-
-[node name="EmptySeat" type="Area2D" unique_id=1909341367]
+[node name="EmptySeat" type="Node2D" unique_id=979198957]
 script = ExtResource("1_nf35h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793603948]
-shape = SubResource("RectangleShape2D_nf35h")
+[node name="Button" type="Button" parent="." unique_id=1008526028]
+modulate = Color(1, 1, 1, 0)
+z_index = 99
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
