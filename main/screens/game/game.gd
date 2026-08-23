@@ -117,12 +117,12 @@ func setup_micro_game(micro_game : MicroGame, info : MicroGameInfo):
 		
 		if micro_game.timer_type != MicroGame.DefaultTimerType.CustomTimer:
 			default_timer = default_timers[micro_game.timer_type].instantiate()
-			add_child(default_timer)
+			$GameLayer.add_child(default_timer)
 
 		elif micro_game.timer == null:
 			push_warning("a micro_game with a custom timer did not provide it!")
 			default_timer = default_timer_no_UI.instantiate()
-			add_child(default_timer)
+			$GameLayer.add_child(default_timer)
 
 		micro_game.timer = default_timer
 	
