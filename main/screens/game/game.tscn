@@ -10,12 +10,19 @@
 [ext_resource type="Script" uid="uid://v8wo848a1qhs" path="res://main/screens/game/transitions/transition_sequence.gd" id="5_cuboj"]
 [ext_resource type="Resource" uid="uid://buprnem5q1hbr" path="res://shared/transitions/default_transition_pack/default_transition_pack.tres" id="5_ewj8m"]
 [ext_resource type="Script" uid="uid://d658l3eo5yb0" path="res://main/screens/game/transitions/transition.gd" id="6_fnicf"]
+[ext_resource type="Script" uid="uid://bn476yihxmrs0" path="res://shared/transitions/default_transition_pack/debug_transition.gd" id="8_cuboj"]
 [ext_resource type="PackedScene" uid="uid://b0evmwm0qm4pd" path="res://main/screens/game/audio_interface/music_player.tscn" id="11_a2qi7"]
 
 [sub_resource type="Resource" id="Resource_a2qi7"]
 script = ExtResource("5_cuboj")
 transitions = Array[ExtResource("6_fnicf")]([ExtResource("5_ewj8m")])
 metadata/_custom_type_script = "uid://v8wo848a1qhs"
+
+[sub_resource type="Resource" id="Resource_fnicf"]
+script = ExtResource("8_cuboj")
+text = "Speeding Up!"
+time = 0.1
+metadata/_custom_type_script = "uid://bn476yihxmrs0"
 
 [sub_resource type="Resource" id="Resource_bsumw"]
 script = ExtResource("5_8damv")
@@ -34,6 +41,7 @@ default_timer_with_UI = ExtResource("2_mgkyc")
 exit_game_win_transtion = ExtResource("4_8damv")
 exit_game_lose_transtion = ExtResource("4_8damv")
 enter_game_transtion = SubResource("Resource_a2qi7")
+speed_up_transtion = SubResource("Resource_fnicf")
 score_up_transtion = ExtResource("5_ewj8m")
 lives_down_transtion = ExtResource("5_ewj8m")
 release_pack = ExtResource("3_bg6tk")

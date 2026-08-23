@@ -31,6 +31,11 @@ enum GamePackSelection {
 @export var game_pack_selection : GamePackSelection
 @export var game_selector : GameSelector
 
+@export_group("Speed Up")
+@export var speed_up_frequency = 3
+@export var speed_inc = 0.1
+
+
 @onready var all_games : Array[MicroGameInfo] 
 @onready var music_player : AudioStreamPlayer = $MusicPlayer
 
@@ -54,12 +59,19 @@ func _reset_cursor() -> void:
 		
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-
+func _set_time_scale(scale : float ):
+	Engine.time_scale = scale
+	music_player.pitch_scale = lerp(1.0, 2.0, 1.0 - exp(1.0 - scale))
+	# TODO: decide on the music as well
+	
 var current_game : MicroGame
 var default_timer : MicroGameTimer
 var game_timed_out : bool
+
 var lives = 3
 var score = 0
+var speed_mult = 1
+var speed_up_in = speed_up_frequency
 
 func on_rebuild(screen):
 	if screen != GameManager.Screen.Game:
@@ -77,6 +89,10 @@ func on_screen_enter(screen):
 
 	lives = 3
 	score = 0
+	speed_mult = 1
+	speed_up_in = speed_up_frequency
+
+	_set_time_scale(1)
 
 	current_game = null
 	default_timer = null
@@ -87,6 +103,7 @@ func on_screen_exit(screen):
 		return
 	music_player.stop()
 	_reset_cursor()
+	_set_time_scale(1)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
@@ -141,6 +158,7 @@ func start_game():
 	music_player.stream_paused = game_selector.current_game.start_with_music_paused
 	
 	_reset_cursor()
+	_set_time_scale(speed_mult)
 	if game_selector.current_game.control_format != MicroGame.ControlFormat.KeyboardOnly:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
@@ -161,6 +179,9 @@ func on_game_timeout():
 		current_game.win.emit()
 
 func on_game_end(win: bool):
+	
+	_set_time_scale(speed_mult)
+	
 	if current_game:
 		current_game.timer.stop()
 		await get_tree().create_timer(current_game.post_game_time).timeout
@@ -182,6 +203,15 @@ func on_game_end(win: bool):
 				make_transition_context(), 
 				IncreaseScoreEvent.new(score + 1, score))
 			score += 1
+			
+			#await speed_up_transtion.execute(
+				#make_transition_context(), 
+				#SpeedUpEvent.new())
+			speed_up_in -= 1
+			if speed_up_in <= 0:
+				speed_mult += speed_inc
+				speed_up_in = speed_up_frequency
+			
 		else:
 			await exit_game_lose_transtion.execute(make_transition_context(), mg_exit)
 			await lives_down_transtion.execute(
