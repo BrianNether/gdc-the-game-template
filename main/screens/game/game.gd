@@ -59,7 +59,8 @@ func _reset_cursor() -> void:
 		
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-func _set_time_scale(scale : float ):
+
+func _set_time_scale(scale : float):
 	Engine.time_scale = scale
 	music_player.pitch_scale = lerp(1.0, 2.0, 1.0 - exp(1.0 - scale))
 	# TODO: decide on the music as well

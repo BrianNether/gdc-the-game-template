@@ -113,6 +113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 0.99607843, 0.99607843, 1)
 
 [node name="TitleScreen" parent="UI" unique_id=1552944673 instance=ExtResource("7_4dugh")]
 
