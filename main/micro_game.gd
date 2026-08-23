@@ -2,9 +2,15 @@ extends Node2D
 class_name MicroGame
 
 @warning_ignore_start("unused_signal")
+signal enter_animation
+
 signal start
 signal win
 signal lose
+
+signal pause_music
+signal resume_music
+
 @warning_ignore_restore("unused_signal")
 
 
@@ -32,8 +38,9 @@ enum DefaultTimerType {
 @export var timer : MicroGameTimer
 
 @export_range(2, 10) var game_duration: float = 4
-@export var post_game_time : float = 2.5
 
+@export var pre_game_time : float = 0
+@export var post_game_time : float = 2.5
 
 @export_group("Loading")
 @export var always_reload : bool = true

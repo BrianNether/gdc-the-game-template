@@ -6,6 +6,7 @@ class_name MicroGameInfo
 @export var title: String
 @export var authors: String
 @export_multiline var description: String
+@export var instruction: String
 
 @export var thumbnail : Texture2D
 
@@ -27,7 +28,6 @@ class_name MicroGameInfo
 
 @export_group("Music")
 @export var start_with_music_paused : bool = false
-@export var custom_music : AudioStream = null 
 
 @export_group("Advanced")
 @export var custom_credit_display : PackedScene = null

@@ -127,13 +127,28 @@ func start_game():
 	current_game.win.connect(on_game_end.bind(true))
 	current_game.lose.connect(on_game_end.bind(false))
 	
+	current_game.pause_music.connect(pause_music)
+	current_game.resume_music.connect(resume_music)
+	
 	var mg_enter = MicroGameEvent.new(
 		game_selector.current_game, 
 		MicroGameEvent.StateChange.ENTER, 
 		MicroGameEvent.Outcome.NONE,
 		MicroGameEvent.OutcomeReason.NONE
 	)
+	
 	await enter_game_transtion.execute(make_transition_context(), mg_enter)
+	music_player.stream_paused = game_selector.current_game.start_with_music_paused
+	
+	_reset_cursor()
+	if game_selector.current_game.control_format != MicroGame.ControlFormat.KeyboardOnly:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
+	if current_game.pre_game_time > 0.001:
+		current_game.enter_animation.emit()
+		await get_tree().create_timer(current_game.pre_game_time).timeout
 	
 	current_game.start.emit()
 	current_game.timer.start(current_game.game_duration)
@@ -149,6 +164,9 @@ func on_game_end(win: bool):
 	if current_game:
 		current_game.timer.stop()
 		await get_tree().create_timer(current_game.post_game_time).timeout
+		
+		music_player.stream_paused = false
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		
 		var mg_exit = MicroGameEvent.new(
 			game_selector.current_game, 
@@ -209,3 +227,9 @@ func make_transition_context():
 	context.overlay_layer = $TransitionOverlay
 	context.music_player = $MusicPlayer
 	return context
+
+func pause_music():
+	music_player.stream_paused = true
+
+func resume_music():
+	music_player.stream_paused = false

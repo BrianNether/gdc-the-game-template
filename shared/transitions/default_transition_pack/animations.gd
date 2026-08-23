@@ -26,13 +26,13 @@ func hide_all():
 	
 func display_controls(info : MicroGameInfo):
 	if info.control_format == MicroGame.ControlFormat.MouseOnly:
-		await play_controls(info.description, mouse_only_input)
+		await play_controls(info.instruction, mouse_only_input)
 		
 	elif info.control_format == MicroGame.ControlFormat.KeyboardOnly:
-		await play_controls(info.description, keyboard_only_input)
+		await play_controls(info.instruction, keyboard_only_input)
 		
 	else:
-		await play_controls(info.description, keyboard_and_mouse_input)
+		await play_controls(info.instruction, keyboard_and_mouse_input)
 
 func play_controls(description_text, inp : Control):
 	hide_all()
