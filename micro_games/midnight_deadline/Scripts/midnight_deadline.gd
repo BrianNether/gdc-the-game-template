@@ -28,7 +28,6 @@ func _ready() -> void:
 		ui.visible = false
 	
 	set_process(false)
-	_setup_cursors()
 	_add_black_backdrop()
 	# so the urgent-red pulse can restore it later instead of falling back to theme white
 	_clock_default_color = clock_label.get_theme_color("font_color")
@@ -57,6 +56,7 @@ func _add_black_backdrop() -> void:
 
 func _on_start() -> void:
 	
+	_setup_cursors()
 	var ui := get_node_or_null("UI")
 	if ui:
 		ui.visible = true
