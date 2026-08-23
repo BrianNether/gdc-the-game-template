@@ -145,6 +145,7 @@ func _on_win() -> void:
 
 
 func _on_lose() -> void:
+	pause_music.emit()
 	_end_round()
 	_show_end_feedback(false)
 

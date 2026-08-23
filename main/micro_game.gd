@@ -10,7 +10,6 @@ signal lose
 
 signal pause_music
 signal resume_music
-
 @warning_ignore_restore("unused_signal")
 
 

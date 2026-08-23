@@ -12,4 +12,3 @@ game_scene = ExtResource("1_scene")
 width = 1920
 height = 1080
 control_format = 0
-start_with_music_paused = true
