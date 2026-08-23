@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4gih6smnqwaf"
-path="res://.godot/imported/red.png-4b3049ee37f775f4e9d3ab416ec9b860.ctex"
+uid="uid://b50friu2k7bsm"
+path="res://.godot/imported/sweat_drops.png-d91dadc7e799628e6af58b7768188e1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/find_a_seat/assets/heads_special/red.png"
-dest_files=["res://.godot/imported/red.png-4b3049ee37f775f4e9d3ab416ec9b860.ctex"]
+source_file="res://micro_games/find_a_seat/assets/sweat_drops.png"
+dest_files=["res://.godot/imported/sweat_drops.png-d91dadc7e799628e6af58b7768188e1b.ctex"]
 
 [params]
 

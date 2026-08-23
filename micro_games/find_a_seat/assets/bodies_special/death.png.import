@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2k7opo1dyv58"
-path="res://.godot/imported/red.png-f1683b7578f11cad4364a09801a861d2.ctex"
+uid="uid://cva1jbjfhchlb"
+path="res://.godot/imported/death.png-d992ddcbbe938867a959669a93401b37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/find_a_seat/assets/bodies_special/red.png"
-dest_files=["res://.godot/imported/red.png-f1683b7578f11cad4364a09801a861d2.ctex"]
+source_file="res://micro_games/find_a_seat/assets/bodies_special/death.png"
+dest_files=["res://.godot/imported/death.png-d992ddcbbe938867a959669a93401b37.ctex"]
 
 [params]
 

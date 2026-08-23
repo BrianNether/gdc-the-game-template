@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cksau5gmbhmpq"
-path="res://.godot/imported/blue.png-4d346df4024f0abec4cb45a0ac15097c.ctex"
+uid="uid://u63ul3yf7500"
+path="res://.godot/imported/head_devchan_right.png-63d24943f12124eeef35967e0de19efe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/find_a_seat/assets/bodies_normie/blue.png"
-dest_files=["res://.godot/imported/blue.png-4d346df4024f0abec4cb45a0ac15097c.ctex"]
+source_file="res://micro_games/find_a_seat/assets/head_devchan_right.png"
+dest_files=["res://.godot/imported/head_devchan_right.png-63d24943f12124eeef35967e0de19efe.ctex"]
 
 [params]
 

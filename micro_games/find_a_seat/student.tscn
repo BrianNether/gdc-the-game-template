@@ -74,4 +74,4 @@ autoplay = "default"
 [node name="Head" type="AnimatedSprite2D" parent="." unique_id=1944646660]
 sprite_frames = SubResource("SpriteFrames_17b1a")
 autoplay = "default"
-frame_progress = 0.34890375
+frame_progress = 0.75279254

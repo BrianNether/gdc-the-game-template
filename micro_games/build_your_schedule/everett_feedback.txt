@@ -1,0 +1,4 @@
+- premise and execution good
+- poor performance on slow machine
+- beat fairly consistently, probably hardest game
+- extra course might be easier because of reduced options

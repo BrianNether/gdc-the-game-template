@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bh7ciis7iwy5r"]
+
+[ext_resource type="Script" uid="uid://cao0vissjt8uy" path="res://micro_games/find_a_seat/scripts/empty_seat.gd" id="1_nf35h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf35h"]
+size = Vector2(48, 64)
+
+[node name="EmptySeat" type="Area2D" unique_id=1909341367]
+script = ExtResource("1_nf35h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793603948]
+shape = SubResource("RectangleShape2D_nf35h")

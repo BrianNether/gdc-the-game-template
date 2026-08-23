@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b72mm2t1frpn6"
-path="res://.godot/imported/pink.png-c0b8d7c6d0db2eb28bb40f0fdfae0d07.ctex"
+uid="uid://bm0hu5m8wm36i"
+path="res://.godot/imported/spiky.png-76e8e02dbc1b3381f80a3f380159d1b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/find_a_seat/assets/bodies_normie/pink.png"
-dest_files=["res://.godot/imported/pink.png-c0b8d7c6d0db2eb28bb40f0fdfae0d07.ctex"]
+source_file="res://micro_games/find_a_seat/assets/heads_normie/spiky.png"
+dest_files=["res://.godot/imported/spiky.png-76e8e02dbc1b3381f80a3f380159d1b0.ctex"]
 
 [params]
 

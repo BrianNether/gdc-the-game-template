@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr4c545q5kr1q"
-path="res://.godot/imported/pink.png-9ea97aaf61659d42524049ecb8eff505.ctex"
+uid="uid://cum444x7ffg5l"
+path="res://.godot/imported/head_devchan_left.png-6197e394b3845b74fe114ed9d2e4a6c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/find_a_seat/assets/heads_normie/pink.png"
-dest_files=["res://.godot/imported/pink.png-9ea97aaf61659d42524049ecb8eff505.ctex"]
+source_file="res://micro_games/find_a_seat/assets/head_devchan_left.png"
+dest_files=["res://.godot/imported/head_devchan_left.png-6197e394b3845b74fe114ed9d2e4a6c2.ctex"]
 
 [params]
 

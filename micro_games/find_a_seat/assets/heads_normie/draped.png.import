@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs3j0083myqlf"
-path="res://.godot/imported/green.png-eebf4e7b16d4d6f2a02008a07f2ed50d.ctex"
+uid="uid://cdtpe50r7ncji"
+path="res://.godot/imported/draped.png-3f6297aa3bbc8d69bddc360cde1a22ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/find_a_seat/assets/bodies_special/green.png"
-dest_files=["res://.godot/imported/green.png-eebf4e7b16d4d6f2a02008a07f2ed50d.ctex"]
+source_file="res://micro_games/find_a_seat/assets/heads_normie/draped.png"
+dest_files=["res://.godot/imported/draped.png-3f6297aa3bbc8d69bddc360cde1a22ab.ctex"]
 
 [params]
 

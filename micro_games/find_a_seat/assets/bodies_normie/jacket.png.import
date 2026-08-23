@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cesbx04xo7cnq"
-path="res://.godot/imported/green.png-8184aa198e91af894e105ac15134e339.ctex"
+uid="uid://b1litreaklq1i"
+path="res://.godot/imported/jacket.png-86ec2bd3a32644542c329da207c38393.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/find_a_seat/assets/heads_special/green.png"
-dest_files=["res://.godot/imported/green.png-8184aa198e91af894e105ac15134e339.ctex"]
+source_file="res://micro_games/find_a_seat/assets/bodies_normie/jacket.png"
+dest_files=["res://.godot/imported/jacket.png-86ec2bd3a32644542c329da207c38393.ctex"]
 
 [params]
 
