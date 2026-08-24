@@ -13,6 +13,14 @@ var skin_color: Color
 var hair_color: Color
 var clothes_color: Color
 
+var tilt_direction := 1.0
+var stretch := 1.0:
+	set(value):
+		stretch = value
+		%Body.scale.x = value
+		%Body.scale.y = 1 / value
+		%Body.skew = (value - 1) * tilt_direction
+
 const FRAME_COUNT = 3
 
 const MAX_SPECIAL_COUNT = 3
@@ -36,6 +44,7 @@ func choose_appearance_normie() -> void:
 	var head_sheet: Texture2D = load(PATH_NORMIE_HEADS + "/" + head_file)
 	var body_sheet: Texture2D = load(PATH_NORMIE_BODIES + "/" + body_file)
 	set_sprites_from_sheets(head_sheet, body_sheet)
+	scale.x = [-1, 1].pick_random()
 	
 func choose_appearance_special() -> void:
 	var head_files := get_png_files(PATH_SPECIAL_HEADS)
@@ -62,7 +71,6 @@ func choose_appearance() -> void:
 		choose_appearance_special()
 	else:
 		choose_appearance_normie()
-	scale.x = [-1, 1].pick_random()
 		
 func replace_colors(texture: Texture2D) -> ImageTexture:
 	var image := texture.get_image()
@@ -77,8 +85,8 @@ func replace_colors(texture: Texture2D) -> ImageTexture:
 	return ImageTexture.create_from_image(image)
 		
 func set_sprites_from_sheets(head_sheet: Texture2D, body_sheet: Texture2D) -> void:
-	set_sprite_from_sheet($Head, head_sheet)
-	set_sprite_from_sheet($Body, body_sheet)
+	set_sprite_from_sheet(%Head, head_sheet)
+	set_sprite_from_sheet(%Body, body_sheet)
 	
 func set_sprite_from_sheet(sprite: AnimatedSprite2D, sheet: Texture2D) -> void:
 	if sheet == null:
@@ -97,3 +105,13 @@ func set_sprite_from_sheet(sprite: AnimatedSprite2D, sheet: Texture2D) -> void:
 
 func _ready() -> void:
 	choose_appearance()
+	start_bounce_tween()
+	
+func start_bounce_tween() -> void:
+	var tween := create_tween().set_trans(Tween.TRANS_SPRING).set_loops()
+	tween.set_ease(Tween.EASE_OUT).tween_property(self, "stretch", 1.02, 0.2)
+	tween.set_ease(Tween.EASE_IN).tween_property(self, "stretch", 1.0, 0.2)
+	tween.set_ease(Tween.EASE_OUT).tween_property(self, "stretch", 0.98, 0.2)
+	tween.set_ease(Tween.EASE_IN).tween_property(self, "stretch", 1.0, 0.2)
+	tween.tween_callback(func() -> void: tilt_direction *= -1)
+	tween.custom_step((global_position.x + global_position.y) * 0.001)

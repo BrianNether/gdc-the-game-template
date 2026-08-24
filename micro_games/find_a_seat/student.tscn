@@ -68,10 +68,15 @@ animations = [{
 script = ExtResource("1_eh7pc")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=1146336265]
+unique_name_in_owner = true
+position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_h4hwe")
 autoplay = "default"
+offset = Vector2(0, -24)
 
-[node name="Head" type="AnimatedSprite2D" parent="." unique_id=1944646660]
+[node name="Head" type="AnimatedSprite2D" parent="Body" unique_id=1944646660]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_17b1a")
 autoplay = "default"
 frame_progress = 0.75279254
+offset = Vector2(0, -24)

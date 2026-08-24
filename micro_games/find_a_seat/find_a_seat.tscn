@@ -287,6 +287,16 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_6to4c"]
+offsets = PackedFloat32Array(0, 0.52669036, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1254902)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qwi1b"]
+gradient = SubResource("Gradient_6to4c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="FindASeat" type="Node2D" unique_id=1748513247]
 script = ExtResource("1_pf5fe")
 control_format = 0
@@ -545,19 +555,31 @@ texture = ExtResource("3_wafv2")
 z_index = 2
 position = Vector2(320, 88)
 
-[node name="Body" type="AnimatedSprite2D" parent="DevChan" unique_id=385033702]
+[node name="JumpContainer" type="Node2D" parent="DevChan" unique_id=558439387]
+
+[node name="Body" type="AnimatedSprite2D" parent="DevChan/JumpContainer" unique_id=385033702]
+position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_g01le")
 autoplay = "default"
 frame_progress = 0.095553905
+offset = Vector2(0, -24)
 
-[node name="Head" type="AnimatedSprite2D" parent="DevChan/Body" unique_id=1856085719]
+[node name="Head" type="AnimatedSprite2D" parent="DevChan/JumpContainer/Body" unique_id=1856085719]
 sprite_frames = SubResource("SpriteFrames_jq020")
 animation = &"glance"
 autoplay = "glance"
 frame_progress = 0.5587319
+offset = Vector2(0, -24)
 
-[node name="Sweat" type="AnimatedSprite2D" parent="DevChan/Body/Head" unique_id=499431024]
-position = Vector2(24, -24)
+[node name="Sweat" type="AnimatedSprite2D" parent="DevChan/JumpContainer/Body/Head" unique_id=499431024]
+position = Vector2(24, -48)
 sprite_frames = SubResource("SpriteFrames_01h16")
 autoplay = "default"
 frame_progress = 0.26690468
+
+[node name="Vignette" type="Sprite2D" parent="." unique_id=2107968400]
+position = Vector2(320.00006, 180)
+scale = Vector2(10, 5.6249995)
+texture = SubResource("GradientTexture2D_qwi1b")
+
+[connection signal="frame_changed" from="DevChan/JumpContainer/Body/Head" to="." method="on_dev_chan_frame_changed"]
