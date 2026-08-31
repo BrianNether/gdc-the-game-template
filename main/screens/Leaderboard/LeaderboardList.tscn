@@ -29,6 +29,8 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [node name="LeaderboardList" type="VBoxContainer" unique_id=1963682393]
+offset_right = 228.0
+offset_bottom = 446.0
 alignment = 1
 script = ExtResource("1_hahak")
 
@@ -71,6 +73,41 @@ theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
+
+[node name="LoadingNotification" type="Control" parent="OuterPanel/MarginContainer/InnerPanel/MarginContainer" unique_id=2060602103]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OuterPanel/MarginContainer/InnerPanel/MarginContainer/LoadingNotification" unique_id=1093634531]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("2_hahak")
+theme_override_font_sizes/font_size = 32
+text = "LOADING..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmptyNotification" type="Control" parent="OuterPanel/MarginContainer/InnerPanel/MarginContainer" unique_id=1987959457]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OuterPanel/MarginContainer/InnerPanel/MarginContainer/EmptyNotification" unique_id=2073568538]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("2_hahak")
+theme_override_font_sizes/font_size = 32
+text = "NO DATA"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="OuterPanel/MarginContainer/InnerPanel/MarginContainer" unique_id=2143816373]
 layout_mode = 2

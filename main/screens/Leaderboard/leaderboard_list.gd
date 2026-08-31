@@ -7,6 +7,8 @@ const colour_B := Color(0.647, 0.824, 0.843, 1.0)
 @onready var title_label := $TitleLabel
 @onready var score_container := $OuterPanel/MarginContainer/InnerPanel/MarginContainer/ScrollContainer/ScoreContainer
 @onready var score_display_scn : PackedScene = preload("res://main/screens/Leaderboard/ScoreDisplay.tscn")
+@onready var loading_notification := $OuterPanel/MarginContainer/InnerPanel/MarginContainer/LoadingNotification
+@onready var empty_notification := $OuterPanel/MarginContainer/InnerPanel/MarginContainer/EmptyNotification
 
 var _use_colour_A : bool = true
 var _rank : int = 1
@@ -30,7 +32,12 @@ func _add_new_score(score_res:ScoreResource):
 func display_score_list(scores:Array[ScoreResource]):
 	_use_colour_A = true
 	for c in score_container.get_children(): c.queue_free()
+	empty_notification.hide()
+	loading_notification.show()
 	_rank = 1
 	scores.sort_custom(func(a:ScoreResource, b:ScoreResource):return a.score > b.score)
 	for s in scores:
 		_add_new_score(s)
+	loading_notification.hide()
+	if len(scores) == 0:
+		empty_notification.show()
