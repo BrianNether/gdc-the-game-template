@@ -10,6 +10,7 @@ signal score_created(score_resource:ScoreResource)
 @onready var enter_leaderboard_button := $VBoxContainer/CenterContainer/EnterLeaderboardButton
 @onready var name_input := $VBoxContainer/Control/CenterContainer/NameInput
 @onready var score_label := $VBoxContainer/ScoreDisplay/ScoreLabel
+@onready var uploading_state_notification := $UploadingStateNotification
 
 var score : int:
 	set(new):
@@ -24,6 +25,7 @@ func open_creator(s:int):
 
 
 func enter_score():
+	uploading_state_notification.show()
 	enter_leaderboard_button.disabled = true
 	name_input.hide()
 	var new_score := ScoreResource.new(name_input.text, score)
@@ -31,6 +33,7 @@ func enter_score():
 	await Talo.players.identify("username", name_input.text)
 	var res_alltime := await Talo.leaderboards.add_entry(TALO_alltime_leaderboard_name, new_score.score)
 	var res_daily := await Talo.leaderboards.add_entry(TALO_daily_leaderboard_name, new_score.score)
+	uploading_state_notification.hide()
 	hide()
 
 

@@ -126,6 +126,39 @@ layout_mode = 2
 theme = ExtResource("3_4tref")
 text = "SKIP"
 
+[node name="UploadingStateNotification" type="Control" parent="." unique_id=947380918]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UploadingStateNotification" unique_id=358618526]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.99607843, 0.99607843, 1)
+
+[node name="Label" type="Label" parent="UploadingStateNotification" unique_id=1508328175]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("2_pxw2c")
+theme_override_font_sizes/font_size = 64
+text = "UPLOADING..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="name_created" from="VBoxContainer/Control/CenterContainer/NameInput" to="." method="_on_name_input_name_created"]
 [connection signal="name_deleted" from="VBoxContainer/Control/CenterContainer/NameInput" to="." method="_on_name_input_name_deleted"]
 [connection signal="text_changed" from="VBoxContainer/Control/CenterContainer/NameInput" to="VBoxContainer/Control/CenterContainer/NameInput" method="_on_text_changed"]
