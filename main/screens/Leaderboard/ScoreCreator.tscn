@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bjgbr1x8cwahg"]
+
+[ext_resource type="Script" uid="uid://dswdpcawrhrt5" path="res://main/screens/Leaderboard/score_creator.gd" id="1_n0qv5"]
+
+[node name="ScoreCreator" type="Control" unique_id=1807623919]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n0qv5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1982376897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.99607843, 0.99607843, 1)

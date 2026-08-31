@@ -50,9 +50,15 @@ text = "LEADERBOARD"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1651442321]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 20
 
-[node name="TodayLeaderboardList" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1963682393 instance=ExtResource("4_0jj8b")]
+[node name="LocalLeaderboardList" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1963682393 instance=ExtResource("4_0jj8b")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+leaderboard_name = "LOCAL"
+
+[node name="TodayLeaderboardList" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=958035784 instance=ExtResource("4_0jj8b")]
 layout_mode = 2
 size_flags_horizontal = 3
 
