@@ -28,6 +28,7 @@ func _add_new_score(score_res:ScoreResource):
 
 
 func display_score_list(scores:Array[ScoreResource]):
+	_use_colour_A = true
 	for c in score_container.get_children(): c.queue_free()
 	_rank = 1
 	scores.sort_custom(func(a:ScoreResource, b:ScoreResource):return a.score > b.score)
