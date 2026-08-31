@@ -35,6 +35,13 @@ enum GamePackSelection {
 @export var speed_up_frequency = 3
 @export var speed_inc = 0.1
 
+@export_category("UI")
+# Note: This section should be temporary (ideally)
+# I just need a way to quickly connect things and couldn't figure out how
+# to do it within the current architecture of the game
+# hopefully it's not too spaghetti
+# -Everett
+@export var score_creator : ScoreCreator
 
 @onready var all_games : Array[MicroGameInfo] 
 @onready var music_player : AudioStreamPlayer = $MusicPlayer
@@ -238,6 +245,9 @@ func unload_game():
 func play_next_game():
 	if lives == 0:
 		GameManager.go_to_end()
+		## TEMPORARY (need to find a better way to do this)
+		score_creator.open_creator(score)
+		##
 		return
 	
 	var micro_game : MicroGame = game_selector.get_next_game()

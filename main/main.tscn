@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4oipvvn88xbe" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://dxwa1yvb1t7sa" path="res://main/screens/game/game.tscn" id="2_4dugh"]
+[ext_resource type="PackedScene" uid="uid://bjgbr1x8cwahg" path="res://main/screens/Leaderboard/ScoreCreator.tscn" id="3_grrlh"]
 [ext_resource type="PackedScene" uid="uid://3gmyrempxmn4" path="res://main/screens/title_screen/title_screen.tscn" id="7_4dugh"]
 [ext_resource type="PackedScene" uid="uid://cwwjmkhexeoxu" path="res://main/screens/Leaderboard/Leaderboard.tscn" id="8_67ri8"]
 [ext_resource type="PackedScene" uid="uid://bvd8iqr5v1mwb" path="res://main/screens/main_menu/main_menu.tscn" id="8_bsumw"]
@@ -102,8 +103,9 @@ script = ExtResource("1_53q0u")
 
 [node name="Game" type="CanvasLayer" parent="." unique_id=1715780943]
 
-[node name="Game" parent="Game" unique_id=189926272 instance=ExtResource("2_4dugh")]
+[node name="Game" parent="Game" unique_id=189926272 node_paths=PackedStringArray("score_creator") instance=ExtResource("2_4dugh")]
 unique_name_in_owner = true
+score_creator = NodePath("../../UI/ScoreCreator")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1809745090]
 layer = 2
@@ -132,6 +134,10 @@ visible = false
 this_screen = 6
 
 [node name="Leaderboard" parent="UI" unique_id=244793586 instance=ExtResource("8_67ri8")]
+visible = false
+
+[node name="ScoreCreator" parent="UI" unique_id=1807623919 instance=ExtResource("3_grrlh")]
+visible = false
 
 [node name="UIOverlay" type="CanvasLayer" parent="." unique_id=825779749]
 layer = 2

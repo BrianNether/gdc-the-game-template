@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwwjmkhexeoxu"]
 
-[ext_resource type="Script" uid="uid://dtyvffw85vxrq" path="res://main/screens/screen_root.gd" id="1_8qq8k"]
+[ext_resource type="Script" uid="uid://vai0dkb56uxt" path="res://main/screens/Leaderboard/leaderboard.gd" id="1_0jj8b"]
 [ext_resource type="Theme" uid="uid://d1iskwj0kgqo8" path="res://main/themes/menu_theme.tres" id="2_1cg4h"]
 [ext_resource type="Script" uid="uid://d1l1c5xva3lcu" path="res://main/screens/level_switch_button.gd" id="2_3g33b"]
 [ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="3_0jj8b"]
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8qq8k")
+script = ExtResource("1_0jj8b")
 this_screen = 5
 metadata/_custom_type_script = "uid://dtyvffw85vxrq"
 
@@ -78,3 +78,5 @@ text = "RETURN
 "
 script = ExtResource("2_3g33b")
 next_screen = 1
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

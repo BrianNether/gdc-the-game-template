@@ -20,11 +20,11 @@ var rank : int:
 		rank_label.text = str(rank) + "."
 		match rank:
 			1:
-				pass
+				medal_texture_rect.texture = load("res://main/screens/Leaderboard/gold_medal.png")
 			2:
-				pass
+				medal_texture_rect.texture = load("res://main/screens/Leaderboard/silver_medal.png")
 			3:
-				pass
+				medal_texture_rect.texture = load("res://main/screens/Leaderboard/bronze_medal.png")
 
 var colour : Color:
 	set(new):

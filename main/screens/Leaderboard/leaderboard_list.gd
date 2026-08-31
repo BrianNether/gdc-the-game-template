@@ -13,10 +13,6 @@ var _rank : int = 1
 
 func _ready():
 	title_label.text = leaderboard_name
-	var score_lst : Array[ScoreResource]
-	for i in range(100):
-		score_lst.append(ScoreResource.new("TESTNAME", randi_range(0, 1500)))
-	display_score_list(score_lst)
 
 func _add_new_score(score_res:ScoreResource):
 	var score_display = score_display_scn.instantiate()
