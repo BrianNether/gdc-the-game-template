@@ -3,7 +3,7 @@ extends Control
 @onready var medal_texture_rect := $HBoxContainer/Left/HBoxContainer/MedalTextureRect
 @onready var rank_label := $HBoxContainer/Left/HBoxContainer/RankLabel
 @onready var name_label := $HBoxContainer/Left/HBoxContainer/NameLabel
-@onready var score_label := $HBoxContainer/Right/ScoreLabel
+@onready var score_label := $HBoxContainer/Right/CenterContainer/ScoreLabel
 @onready var colour_rect := $ColorRect
 
 var score_res : ScoreResource:

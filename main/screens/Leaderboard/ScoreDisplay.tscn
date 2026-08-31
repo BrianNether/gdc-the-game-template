@@ -78,15 +78,19 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScoreLabel" type="Label" parent="HBoxContainer/Right" unique_id=382201430]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Right" unique_id=1276435374]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/Right/CenterContainer" unique_id=382201430]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_kn32s")
 theme_override_font_sizes/font_size = 20
-text = "00000"
+text = "0"
 vertical_alignment = 1

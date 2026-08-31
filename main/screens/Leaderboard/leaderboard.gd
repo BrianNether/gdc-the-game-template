@@ -4,9 +4,13 @@ extends ScreenRoot
 @onready var today_leaderboard := $MarginContainer/VBoxContainer/HBoxContainer/TodayLeaderboardList
 @onready var alltime_leaderboard := $MarginContainer/VBoxContainer/HBoxContainer/AllTimeLeaderboardList
 
+@export var local_data_manager : LocalDataManager
+
 const TALO_alltime_leaderboard_name : String = "All Time Leaderboard"
 const TALO_daily_leaderboard_name : String = "Daily Leaderboard"
 
+func update_local(scores:Array[ScoreResource]):
+	local_leaderboard.display_score_list(scores)
 
 func update_today(scores:Array[ScoreResource]):
 	today_leaderboard.display_score_list(scores)
@@ -49,6 +53,8 @@ func _build_entries():
 		daily_list.append(_entry_to_score_res(entry))
 	update_alltime(alltime_list)
 	update_today(daily_list)
+	if local_data_manager != null:
+		update_local(local_data_manager.get_scores())
 
 func _entry_to_score_res(entry:TaloLeaderboardEntry) -> ScoreResource:
 	var player_name : String = entry.player_alias.identifier

@@ -53,7 +53,6 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="LocalLeaderboardList" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1963682393 instance=ExtResource("4_0jj8b")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 leaderboard_name = "LOCAL"
