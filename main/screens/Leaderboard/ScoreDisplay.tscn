@@ -39,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="Left" type="Control" parent="HBoxContainer" unique_id=718035666]
 layout_mode = 2
@@ -58,7 +59,6 @@ texture = SubResource("GradientTexture2D_kn32s")
 stretch_mode = 2
 
 [node name="RankLabel" type="Label" parent="HBoxContainer/Left/HBoxContainer" unique_id=22125704]
-custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_kn32s")
@@ -67,6 +67,7 @@ text = "1."
 vertical_alignment = 1
 
 [node name="NameLabel" type="Label" parent="HBoxContainer/Left/HBoxContainer" unique_id=578413433]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_kn32s")
@@ -87,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ScoreLabel" type="Label" parent="HBoxContainer/Right/CenterContainer" unique_id=382201430]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_kn32s")
