@@ -106,9 +106,8 @@ script = ExtResource("1_53q0u")
 
 [node name="Game" type="CanvasLayer" parent="." unique_id=1715780943]
 
-[node name="Game" parent="Game" unique_id=189926272 node_paths=PackedStringArray("score_creator") instance=ExtResource("2_4dugh")]
+[node name="Game" parent="Game" unique_id=189926272 instance=ExtResource("2_4dugh")]
 unique_name_in_owner = true
-score_creator = NodePath("../../UI/ScoreCreator")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1809745090]
 layer = 2
@@ -159,4 +158,5 @@ grow_vertical = 2
 root_node = NodePath("../UI")
 libraries/ = SubResource("AnimationLibrary_grrlh")
 
+[connection signal="score_achieved" from="Game/Game" to="UI/ScoreCreator" method="open_creator"]
 [connection signal="score_created" from="UI/ScoreCreator" to="LocalDataManager" method="add_score"]
