@@ -2,16 +2,16 @@ extends HBoxContainer
 class_name DigitDisplay 
 
 var digits : Array[Texture2D] = [
-	preload("res://main/assets/digits/Frame 2.png"),
-	preload("res://main/assets/digits/Frame 1.png"),
-	preload("res://main/assets/digits/Frame 3.png"),
-	preload("res://main/assets/digits/Frame 4.png"),
-	preload("res://main/assets/digits/Frame 5.png"),
-	preload("res://main/assets/digits/Frame 7.png"),
-	preload("res://main/assets/digits/Frame 6.png"),
-	preload("res://main/assets/digits/Frame 8.png"),
-	preload("res://main/assets/digits/Frame 10.png"),
-	preload("res://main/assets/digits/Frame 9.png")
+	preload("res://main/assets/digits/digit0.png"),
+	preload("res://main/assets/digits/digit1.png"),
+	preload("res://main/assets/digits/digit2.png"),
+	preload("res://main/assets/digits/digit3.png"),
+	preload("res://main/assets/digits/digit4.png"),
+	preload("res://main/assets/digits/digit5.png"),
+	preload("res://main/assets/digits/digit6.png"),
+	preload("res://main/assets/digits/digit7.png"),
+	preload("res://main/assets/digits/digit8.png"),
+	preload("res://main/assets/digits/digit9.png")
 ]
 
 var digit_scene : PackedScene = preload("res://main/screens/game/digit.tscn")

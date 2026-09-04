@@ -39,6 +39,20 @@ const FileEntryScenePath := "res://micro_games/midnight_deadline/file_entry.tscn
 ## Single name, not a pool - so there's never more than one Riot Client.
 @export var riot_client_name := "Riot Client"
 
+## Added on top of the above from the 2nd play onward (MidnightDeadline.play_count >= 2).
+@export_group("Extra Filler Files (2nd play+)")
+@export var extra_pdf_filler_names: PackedStringArray = [
+	"Lecture_Slides.pdf",
+	"Group_Project.pdf",
+]
+@export var extra_cpp_filler_names: PackedStringArray = [
+	"physics.cpp",
+	"renderer.cpp",
+]
+@export var extra_folder_filler_names: PackedStringArray = [
+	"Screenshots",
+]
+
 ## _ready() doesn't refire on script/prop changes to an already-open node -
 ## toggle to force a re-populate without reloading the scene.
 @export_group("")
@@ -70,6 +84,16 @@ func _populate() -> void:
 	for n in folder_filler_names:
 		specs.append({"name": n, "icon": folder_icon, "correct": false})
 	specs.append({"name": riot_client_name, "icon": riot_icon, "correct": false})
+
+	# harder from the 2nd play on: more filler files to sift through
+	if not Engine.is_editor_hint() and MidnightDeadline.play_count >= 2:
+		for n in extra_pdf_filler_names:
+			specs.append({"name": n, "icon": pdf_icon, "correct": false})
+		for n in extra_cpp_filler_names:
+			specs.append({"name": n, "icon": cpp_icon, "correct": false})
+		for n in extra_folder_filler_names:
+			specs.append({"name": n, "icon": folder_icon, "correct": false})
+
 	specs.shuffle()
 
 	for spec in specs:

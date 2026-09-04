@@ -1,12 +1,33 @@
 extends MicroGame
+class_name MidnightDeadline
 
 const GameSFX = preload("res://micro_games/midnight_deadline/Scripts/game_sfx.gd")
+const AdPopupSmall := preload("res://micro_games/midnight_deadline/ad_popup_small.tscn")
+const AdPopupMedium := preload("res://micro_games/midnight_deadline/ad_popup_medium.tscn")
+const AdPopupLarge := preload("res://micro_games/midnight_deadline/ad_popup_large.tscn")
+const AD_POPUP_SCENES: Array[PackedScene] = [AdPopupSmall, AdPopupMedium, AdPopupLarge]
 
 ## Drag the essay into the browser's dropzone and hit Submit before the
 ## taskbar clock hits 12:00:00. Logic only - visuals live in the .tscn,
 ## referenced here via scene-unique names (%DropZone, %SubmitButton,
 ## %ClockLabel). Win/lose is decided by asking the dropzone whether the
 ## currently held file is the correct one.
+##
+## Gets slightly harder each time it's played (see `play_count`): from the
+## 2nd play on, file_explorer_grid.gd adds extra filler files; from the 3rd
+## play on, 3 fixed-size pop-up ads appear on startup - once closed, they
+## stay closed for the rest of the round.
+
+## How many times this microgame has been played in the current game
+## session. A plain static var, not saved to disk - resets to 0 whenever
+## GameManager returns to the main menu/title (see _install_reset_hook),
+## which is what actually starts a "new run" - not just process restart,
+## since a static var alone would otherwise keep climbing across every
+## session for as long as the game stays open. Bumped in _init() (before
+## any child's _ready()) so file_explorer_grid.gd sees the up-to-date count
+## in time to use it while populating.
+static var play_count := 0
+static var _reset_hook_installed := false
 
 @onready var dropzone = %DropZone
 @onready var submit_button: BaseButton = %SubmitButton
@@ -21,13 +42,31 @@ var seconds_ticked := 0
 var _clock_default_color: Color
 
 
+func _init() -> void:
+	play_count += 1
+	_install_reset_hook()
+
+
+## Connects a STATIC callback (not bound to this instance, so it survives
+## this instance being freed at round end) to GameManager's global screen
+## signal exactly once, the first time this microgame is ever played.
+## Hooked to exit_screen(Game) - the minigames going back to the menu -
+## rather than any enter/exit of the menu screens themselves.
+static func _install_reset_hook() -> void:
+	if _reset_hook_installed:
+		return
+	_reset_hook_installed = true
+	GameManager.exit_screen.connect(_on_global_screen_exited)
+
+
+static func _on_global_screen_exited(screen: GameManager.Screen) -> void:
+	if screen == GameManager.Screen.Game:
+		play_count = 0
+
+
 func _ready() -> void:
-	
-	var ui := get_node_or_null("UI")
-	if ui:
-		ui.visible = false
-	
 	set_process(false)
+	_setup_cursors()
 	_add_black_backdrop()
 	# so the urgent-red pulse can restore it later instead of falling back to theme white
 	_clock_default_color = clock_label.get_theme_color("font_color")
@@ -55,11 +94,6 @@ func _add_black_backdrop() -> void:
 
 
 func _on_start() -> void:
-	
-	_setup_cursors()
-	var ui := get_node_or_null("UI")
-	if ui:
-		ui.visible = true
 	elapsed_time = 0.0
 	seconds_ticked = 0
 	countdown_active = true
@@ -68,6 +102,53 @@ func _on_start() -> void:
 	clock_label.add_theme_color_override("font_color", _clock_default_color)
 	_update_clock_label()
 	_play_window_intro()
+	_start_ads()
+
+
+## From the 3rd play on, all 3 fixed-size ads appear together right as the
+## round starts. No re-spawning - once closed, an ad is gone for the rest
+## of the round.
+func _start_ads() -> void:
+	if play_count < 3:
+		return
+	for scene in AD_POPUP_SCENES:
+		_spawn_ad(scene)
+
+
+## Positions the ad won't overlap - the two things you can't finish the
+## round without touching. Ads are still allowed to cover the file grid
+## (extra difficulty), just not these.
+const AD_NO_SPAWN_PATHS := ["UI/BrowserWindow/DropZone", "UI/BrowserWindow/SubmitButton"]
+const AD_PLACEMENT_ATTEMPTS := 20
+
+func _spawn_ad(scene: PackedScene) -> void:
+	var ad: Control = scene.instantiate()
+	add_child(ad)
+	var viewport_size := get_viewport_rect().size
+	var max_x: float = maxf(10.0, viewport_size.x - ad.custom_minimum_size.x - 10.0)
+	var max_y: float = maxf(60.0, viewport_size.y - ad.custom_minimum_size.y - 160.0)
+
+	var no_spawn_rects: Array[Rect2] = []
+	for path in AD_NO_SPAWN_PATHS:
+		var node := get_node_or_null(path)
+		if node:
+			no_spawn_rects.append((node as Control).get_global_rect())
+
+	var chosen_position := Vector2(randf_range(10.0, max_x), randf_range(60.0, max_y))
+	for attempt in range(AD_PLACEMENT_ATTEMPTS):
+		var candidate := Vector2(randf_range(10.0, max_x), randf_range(60.0, max_y))
+		var candidate_rect := Rect2(candidate, ad.custom_minimum_size)
+		var overlaps_protected_area := false
+		for r in no_spawn_rects:
+			if candidate_rect.intersects(r):
+				overlaps_protected_area = true
+				break
+		if not overlaps_protected_area:
+			chosen_position = candidate
+			break
+
+	ad.position = chosen_position
+	ad.z_index = 250
 
 
 func _process(delta: float) -> void:
@@ -145,7 +226,6 @@ func _on_win() -> void:
 
 
 func _on_lose() -> void:
-	pause_music.emit()
 	_end_round()
 	_show_end_feedback(false)
 
@@ -156,6 +236,13 @@ func _end_round() -> void:
 	set_process(false)
 	dropzone.lock()
 	_lock_interactions()
+	_clear_ads()
+
+
+func _clear_ads() -> void:
+	for child in get_children():
+		if child.is_in_group("ad_popup"):
+			child.queue_free()
 
 
 ## Blocks further interaction once the round ends, and hides the OS cursor
@@ -231,11 +318,29 @@ func _shake_screen() -> void:
 # set_custom_mouse_cursor() is global engine state - it stays applied after
 # this microgame ends since Main never resets it (move to an autoload if
 # that's not wanted).
-const CURSOR_SCALE := 3.0
+## Cursor scale as authored at the 1920x1080 design resolution. The Game
+## screen renders that design canvas into a SubViewport whose actual output
+## buffer is often smaller (e.g. 1152x648), scaling everything down - but
+## Input.set_custom_mouse_cursor() draws at native OS pixel size and knows
+## nothing about that scaling, so DESIGN_CURSOR_SCALE alone would look
+## oversized relative to the shrunk game visuals. _cursor_scale() corrects
+## for that at runtime.
+const DESIGN_CURSOR_SCALE := 3.0
 
 ## Offset into the scaled texture so the cursor's contact point lines up
 ## with the actual pointer position.
 const CURSOR_HOTSPOT := Vector2(10, 10)
+
+
+## Ratio between the SubViewport's real output size and its 2D design
+## resolution (size_2d_override) - 1.0 when running standalone (no
+## SubViewport wrapper) or when the two already match.
+func _cursor_scale() -> float:
+	var vp := get_viewport()
+	if vp is SubViewport and vp.size_2d_override.x > 0:
+		return DESIGN_CURSOR_SCALE * (float(vp.size.x) / float(vp.size_2d_override.x))
+	return DESIGN_CURSOR_SCALE
+
 
 func _setup_cursors() -> void:
 	var arrow_texture := _load_cursor_texture("res://micro_games/midnight_deadline/Assets/cursor.png")
@@ -249,12 +354,14 @@ func _setup_cursors() -> void:
 	Input.set_custom_mouse_cursor(cross_texture, Input.CURSOR_FORBIDDEN, CURSOR_HOTSPOT)
 
 
-## Resized with nearest-neighbor to stay crisp at CURSOR_SCALE.
+## Resized with nearest-neighbor to stay crisp, at whatever scale actually
+## matches how large the game is being displayed right now.
 func _load_cursor_texture(path: String) -> Texture2D:
+	var scale := _cursor_scale()
 	var img: Image = load(path).get_image()
 	img.resize(
-		int(img.get_width() * CURSOR_SCALE),
-		int(img.get_height() * CURSOR_SCALE),
+		int(img.get_width() * scale),
+		int(img.get_height() * scale),
 		Image.INTERPOLATE_NEAREST
 	)
 	return ImageTexture.create_from_image(img)

@@ -15,3 +15,6 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+micro_games/
+!micro_games/midnight_deadline
+!micro_games/template_game

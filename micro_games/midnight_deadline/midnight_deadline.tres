@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MicroGameInfo" format=3 uid="uid://b8ip6xtholvcp"]
+[gd_resource type="Resource" script_class="MicroGameInfo" format=3 uid="uid://bi50b2p78eoat"]
 
 [ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="1_info"]
 [ext_resource type="PackedScene" uid="uid://5q2f5qdgv0xk" path="res://micro_games/midnight_deadline/midnight_deadline.tscn" id="1_scene"]
@@ -6,9 +6,8 @@
 [resource]
 script = ExtResource("1_info")
 title = "Midnight Deadline"
-description = "Submit your final essay before the deadline at midnight!"
-instruction = "Submit your essay!"
+description = "Drag the correct file into the dropbox and hit submit before the midnight deadline."
+instruction = "Submit Your Essay!"
 game_scene = ExtResource("1_scene")
 width = 1920
 height = 1080
-control_format = 0

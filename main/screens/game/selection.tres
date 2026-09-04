@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MicroGameSelection" format=3 uid="uid://cjgrd0kg1u5gp"]
+
+[ext_resource type="Script" uid="uid://cji2wkyx727kh" path="res://main/micro_game_selection.gd" id="1_57tk1"]
+[ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="2_csxj8"]
+[ext_resource type="Resource" uid="uid://cua6ov2bo1lu0" path="res://micro_games/bubble_sort/bubble_sort.tres" id="3_aorpd"]
+[ext_resource type="Resource" uid="uid://qn1724to6gxn" path="res://micro_games/build_m4/build_m4.tres" id="4_mjifh"]
+[ext_resource type="Resource" uid="uid://c6hlsmdynnrk5" path="res://micro_games/stairs_game/stairs.tres" id="5_osjsh"]
+[ext_resource type="Resource" uid="uid://dr8xa18yksevp" path="res://micro_games/soup_time/soup_time.tres" id="6_lhcfh"]
+[ext_resource type="Resource" uid="uid://m0r2l5w0awp6" path="res://micro_games/find_a_seat/find_a_seat.tres" id="7_6qm5l"]
+
+[resource]
+script = ExtResource("1_57tk1")
+selected_games = Array[ExtResource("2_csxj8")]([ExtResource("3_aorpd"), ExtResource("4_mjifh"), ExtResource("5_osjsh"), ExtResource("6_lhcfh"), ExtResource("7_6qm5l")])
+metadata/_custom_type_script = "uid://cji2wkyx727kh"
