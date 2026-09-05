@@ -4,6 +4,7 @@ extends ScreenRoot
 @onready var today_leaderboard := $MarginContainer/VBoxContainer/HBoxContainer/TodayLeaderboardList
 @onready var alltime_leaderboard := $MarginContainer/VBoxContainer/HBoxContainer/AllTimeLeaderboardList
 @onready var http_request := $HTTPRequest
+@onready var name_input := $MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/CenterContainer/NameInput
 
 @export var local_data_manager : LocalDataManager
 
@@ -73,3 +74,16 @@ func _entry_to_score_res(entry:TaloLeaderboardEntry) -> ScoreResource:
 	var player_name : String = entry.player_alias.identifier
 	var player_score : int = entry.score
 	return ScoreResource.new(player_name, player_score)
+
+func highlight_score(name:String):
+	local_leaderboard.highlight_name(name)
+	today_leaderboard.highlight_name(name)
+	alltime_leaderboard.highlight_name(name)
+
+
+func _on_name_input_name_created():
+	highlight_score(name_input.text)
+
+
+func _on_name_input_name_deleted():
+	highlight_score(name_input.text)

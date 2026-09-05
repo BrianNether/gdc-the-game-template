@@ -5,6 +5,7 @@ extends Control
 @onready var name_label := $HBoxContainer/Left/HBoxContainer/NameLabel
 @onready var score_label := $HBoxContainer/Right/CenterContainer/ScoreLabel
 @onready var colour_rect := $ColorRect
+@onready var highlight := $Highlight
 
 var score_res : ScoreResource:
 	set(new):
@@ -30,3 +31,6 @@ var colour : Color:
 	set(new):
 		colour = new
 		colour_rect.color = colour
+
+func highlight_score(yes : bool):
+	highlight.visible = yes

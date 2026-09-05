@@ -5,7 +5,26 @@
 [ext_resource type="Script" uid="uid://d1l1c5xva3lcu" path="res://main/screens/level_switch_button.gd" id="2_3g33b"]
 [ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="3_0jj8b"]
 [ext_resource type="PackedScene" uid="uid://byuqc5wjgbfrh" path="res://main/screens/Leaderboard/LeaderboardList.tscn" id="4_0jj8b"]
+[ext_resource type="Script" uid="uid://ftx6f41o2bua" path="res://main/screens/Leaderboard/name_input.gd" id="5_pig7g"]
 [ext_resource type="Script" uid="uid://cs26xqu5v5m2k" path="res://main/screens/Leaderboard/connection_test.gd" id="6_1whd7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpeqc"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.22745098, 0.25490198, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mduo7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfk5p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gvbj"]
 
 [node name="Leaderboard" type="Control" unique_id=244793586]
 layout_mode = 3
@@ -67,6 +86,53 @@ layout_mode = 2
 size_flags_horizontal = 3
 leaderboard_name = "ALL TIME"
 
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1468535506]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2" unique_id=822585569]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1959633902]
+layout_mode = 2
+theme = ExtResource("2_1cg4h")
+theme_override_colors/font_color = Color(0, 0.22745098, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_0jj8b")
+theme_override_font_sizes/font_size = 48
+text = "SEARCH: "
+
+[node name="CenterContainer" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1049989092]
+custom_minimum_size = Vector2(284, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/CenterContainer" unique_id=932533963]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpeqc")
+
+[node name="NameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/CenterContainer" unique_id=692799751]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0jj8b")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mduo7")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_gfk5p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3gvbj")
+placeholder_text = "NAMEHERE"
+alignment = 1
+max_length = 8
+expand_to_text_length = true
+virtual_keyboard_enabled = false
+script = ExtResource("5_pig7g")
+
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1281347207]
 layout_mode = 2
 theme_override_constants/margin_right = 800
@@ -83,3 +149,6 @@ next_screen = 1
 script = ExtResource("6_1whd7")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="name_created" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/CenterContainer/NameInput" to="." method="_on_name_input_name_created"]
+[connection signal="name_deleted" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/CenterContainer/NameInput" to="." method="_on_name_input_name_deleted"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/CenterContainer/NameInput" to="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/CenterContainer/NameInput" method="_on_text_changed"]

@@ -29,6 +29,12 @@ func _add_new_score(score_res:ScoreResource):
 	score_display.score_res = score_res
 
 
+func highlight_name(name : String):
+	for c in score_container.get_children():
+		var scr_res : ScoreResource = c.score_res
+		c.highlight_score(name == scr_res.player_name)
+
+
 func display_score_list(scores:Array[ScoreResource]):
 	_use_colour_A = true
 	for c in score_container.get_children(): c.queue_free()
