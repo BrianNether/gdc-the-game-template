@@ -7,7 +7,6 @@
 script = ExtResource("1_info")
 title = "Midnight Deadline"
 description = "Drag the correct file into the dropbox and hit submit before the midnight deadline."
-instruction = "Submit Your Essay!"
 game_scene = ExtResource("1_scene")
 width = 1920
 height = 1080

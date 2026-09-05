@@ -35,7 +35,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Win1" type="Control" unique_id=545431844]
+[node name="Win1" type="Control" unique_id=545431844 node_paths=PackedStringArray("score_number")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,6 +43,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vqk3s")
+score_number = NodePath("score_number")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=165935193]
 material = SubResource("ShaderMaterial_ci3x6")

@@ -73,6 +73,9 @@ func on_screen_enter(screen):
 		if music_player.bus != "bgm_muffled":
 			music_player.bus = "bgm_muffled"
 		resume_music()
+		_reset_cursor()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		clear_info_layer()
 		return
 	
 	resume_music()
@@ -181,8 +184,10 @@ func play_end_sequence(packed_scene, old, new):
 	$GameLayer.visible = true
 	$InfoLayer.visible = false 
 	
-	var win = packed_scene.instantiate()	
+	var win = packed_scene.instantiate()
 	$InfoLayer.add_child(win)
+	if win.has_method("set_initial_value"):
+		win.set_initial_value(old)
 	
 	await play_wipe(
 		screen_wipe, tex2d,
@@ -296,8 +301,9 @@ func unload_game():
 
 func play_next_game():
 	if lives == 0:
-		GameManager.go_to_end()
 		print("game done!")
+		clear_info_layer()
+		GameManager.go_to_end()
 		return
 	
 	var micro_game : MicroGame = \
@@ -305,7 +311,8 @@ func play_next_game():
 			game_selector.get_next_game())
 	
 	if micro_game == null:
-		push_warning("failed to load another game!")
+		push_error("failed to load another game!")
+		clear_info_layer()
 		GameManager.go_to_end()
 
 	else:

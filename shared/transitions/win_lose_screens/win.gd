@@ -1,9 +1,11 @@
 extends Control
 
-@onready var score_number : DigitDisplay = %score_number
+@export var score_number : DigitDisplay
 
+func set_initial_value(val : int):
+	score_number.set_number(val)
+	
 func animate_value_change(old_val : int, new_val : int):
-	score_number.set_number(old_val)
 	score_number.pivot_offset_ratio = Vector2(0.5, 0.5)
 	var original_scale = score_number.scale
 	var tween = create_tween()

@@ -4,15 +4,13 @@ extends Control
 
 @onready var lives_display : Sprite2D = %lives_display
 
-func _ready() -> void:
-	await animate_value_change(3, 2)
-
 func set_lives_sprite(idx):
 	lives_display.texture = life_frames[idx]
 
-func animate_value_change(old_val : int, new_val : int):
-	set_lives_sprite(old_val)
+func set_initial_value(val : int):
+	set_lives_sprite(val)
 	
+func animate_value_change(old_val : int, new_val : int):
 	var original_scale = lives_display.scale
 	
 	var tween = create_tween()
