@@ -3,6 +3,7 @@ extends ScreenRoot
 @onready var local_leaderboard := $MarginContainer/VBoxContainer/HBoxContainer/LocalLeaderboardList
 @onready var today_leaderboard := $MarginContainer/VBoxContainer/HBoxContainer/TodayLeaderboardList
 @onready var alltime_leaderboard := $MarginContainer/VBoxContainer/HBoxContainer/AllTimeLeaderboardList
+@onready var http_request := $HTTPRequest
 
 @export var local_data_manager : LocalDataManager
 
@@ -20,39 +21,51 @@ func update_alltime(scores:Array[ScoreResource]):
 
 func _on_visibility_changed():
 	if visible:
-		var page := 0
-		var done := false
-		while !done:
-			var options := Talo.leaderboards.GetEntriesOptions.new()
-			options.page = page
-			var alltime_res := await Talo.leaderboards.get_entries(TALO_alltime_leaderboard_name, options)
-			done = true
-			#var is_last_page : bool = alltime_res.is_last_page
-			#if is_last_page:
-			#	done = true
+		_build_local_entries()
+		http_request.test_connection()
+		await http_request.request_completed
+		if true:#http_request.most_recent_result:
+			_get_online_leaderboards()
 		
-		page = 0
-		done = false
-		while !done:
-			var options := Talo.leaderboards.GetEntriesOptions.new()
-			options.page = page
-			var daily_res := await Talo.leaderboards.get_entries(TALO_daily_leaderboard_name, options)
-			done = true
-			#var is_last_page : bool = daily_res.is_last_page
-			#if is_last_page:
-			#	done = true
 		
-		_build_entries()
 
-func _build_entries():
+func _get_online_leaderboards():
+	var page := 0
+	var done := false
+	while !done:
+		var options := Talo.leaderboards.GetEntriesOptions.new()
+		options.page = page
+		var alltime_res := await Talo.leaderboards.get_entries(TALO_alltime_leaderboard_name, options)
+		done = true
+		#var is_last_page : bool = alltime_res.is_last_page
+		#if is_last_page:
+		#	done = true
+	
+	page = 0
+	done = false
+	while !done:
+		var options := Talo.leaderboards.GetEntriesOptions.new()
+		options.page = page
+		var daily_res := await Talo.leaderboards.get_entries(TALO_daily_leaderboard_name, options)
+		done = true
+		#var is_last_page : bool = daily_res.is_last_page
+		#if is_last_page:
+		#	done = true
+	
+	_build_online_entries()
+
+func _build_online_entries():
 	var daily_list : Array[ScoreResource]
 	var alltime_list : Array[ScoreResource]
-	for entry in Talo.leaderboards.get_cached_entries(TALO_alltime_leaderboard_name):
-		alltime_list.append(_entry_to_score_res(entry))
-	for entry in Talo.leaderboards.get_cached_entries(TALO_daily_leaderboard_name):
-		daily_list.append(_entry_to_score_res(entry))
+	if http_request.most_recent_result:
+		for entry in Talo.leaderboards.get_cached_entries(TALO_alltime_leaderboard_name):
+			alltime_list.append(_entry_to_score_res(entry))
+		for entry in Talo.leaderboards.get_cached_entries(TALO_daily_leaderboard_name):
+			daily_list.append(_entry_to_score_res(entry))
 	update_alltime(alltime_list)
 	update_today(daily_list)
+
+func _build_local_entries():
 	if local_data_manager != null:
 		update_local(local_data_manager.get_scores())
 
