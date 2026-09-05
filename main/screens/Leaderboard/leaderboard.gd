@@ -37,9 +37,9 @@ func _get_online_leaderboards():
 		options.page = page
 		var alltime_res := await Talo.leaderboards.get_entries(TALO_alltime_leaderboard_name, options)
 		done = true
-		#var is_last_page : bool = alltime_res.is_last_page
-		#if is_last_page:
-		#	done = true
+		var is_last_page : bool = alltime_res.is_last_page
+		if is_last_page:
+			done = true
 	
 	page = 0
 	done = false
@@ -48,9 +48,9 @@ func _get_online_leaderboards():
 		options.page = page
 		var daily_res := await Talo.leaderboards.get_entries(TALO_daily_leaderboard_name, options)
 		done = true
-		#var is_last_page : bool = daily_res.is_last_page
-		#if is_last_page:
-		#	done = true
+		var is_last_page : bool = daily_res.is_last_page
+		if is_last_page:
+			done = true
 	
 	_build_online_entries()
 
