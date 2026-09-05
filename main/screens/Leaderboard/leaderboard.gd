@@ -65,10 +65,13 @@ func _build_online_entries():
 			daily_list.append(_entry_to_score_res(entry))
 	update_alltime(alltime_list)
 	update_today(daily_list)
+	alltime_leaderboard.highlight_name(name_input.text)
+	today_leaderboard.highlight_name(name_input.text)
 
 func _build_local_entries():
 	if local_data_manager != null:
 		update_local(local_data_manager.get_scores())
+		local_leaderboard.highlight_name(name_input.text)
 
 func _entry_to_score_res(entry:TaloLeaderboardEntry) -> ScoreResource:
 	var player_name : String = entry.player_alias.identifier
@@ -87,3 +90,7 @@ func _on_name_input_name_created():
 
 func _on_name_input_name_deleted():
 	highlight_score(name_input.text)
+
+
+func search_by_score_resource(scr_res : ScoreResource):
+	if scr_res != null: name_input.text = scr_res.player_name

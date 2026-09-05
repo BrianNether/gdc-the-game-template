@@ -160,3 +160,4 @@ libraries/ = SubResource("AnimationLibrary_grrlh")
 
 [connection signal="score_achieved" from="Game/Game" to="UI/ScoreCreator" method="open_creator"]
 [connection signal="score_created" from="UI/ScoreCreator" to="LocalDataManager" method="add_score"]
+[connection signal="score_created" from="UI/ScoreCreator" to="UI/Leaderboard" method="search_by_score_resource"]
