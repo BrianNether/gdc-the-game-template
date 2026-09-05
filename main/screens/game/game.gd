@@ -1,6 +1,9 @@
 extends Control
 class_name Game
 
+signal score_achieved(_score: int)
+
+
 @export_group("Timers")
 
 @export var default_timer_no_UI : PackedScene
@@ -304,6 +307,7 @@ func play_next_game():
 		print("game done!")
 		clear_info_layer()
 		GameManager.go_to_end()
+		score_achieved.emit(score)
 		return
 	
 	var micro_game : MicroGame = \

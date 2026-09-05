@@ -11,6 +11,7 @@ class_name Main
 @export var credits_screen : Control
 @export var game_screen : Control
 @export var end_screen : Control
+@export var leaderboard_screen : Control
 
 @onready var current_screen : GameManager.Screen = GameManager.Screen.Title
 
