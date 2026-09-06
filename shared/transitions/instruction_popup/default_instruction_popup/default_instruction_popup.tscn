@@ -54,7 +54,6 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="mouse_icon" type="TextureRect" parent="inputs/mouse_only_input" unique_id=2137816157]
-visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
