@@ -34,7 +34,9 @@ static func reset_appearance_pool() -> void:
 static func get_png_files(path: String) -> Array:
 	var files := DirAccess.get_files_at(path)
 	for file in files.duplicate():
-		if not file.ends_with(".png"):
+		if file.ends_with(".png.import"):
+			files[files.find(file)] = file.trim_suffix(".import")
+		else:
 			files.erase(file)
 	return Array(files)
 
