@@ -193,7 +193,9 @@ func play_end_sequence(packed_scene, old, new):
 	if win.has_method("set_initial_value"):
 		win.set_initial_value(old)
 	
-	current_game.get_parent().remove_child(current_game)
+	unload_game()
+	if current_game:
+		await get_tree().process_frame
 	
 	await play_wipe(
 		screen_wipe, tex2d,
@@ -290,7 +292,6 @@ func on_game_end(win: bool):
 			await play_end_sequence(lives_down, lives, lives - 1)
 			lives -= 1
 			
-		unload_game()
 		
 	play_next_game()
 
