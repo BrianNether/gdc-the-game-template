@@ -134,8 +134,6 @@ func setup_micro_game(micro_game : MicroGame, info : MicroGameInfo):
 		game_viewport.size_2d_override.x = 0
 		game_viewport.size_2d_override.y = 0
 	
-	game_viewport.add_child(micro_game)
-	
 	current_game = micro_game
 	game_timed_out = false
 
@@ -169,7 +167,10 @@ func play_instruction_sequence(info : MicroGameInfo):
 		await inst.display_controls(info)
 	
 	var tex2d = await capture_viewport()
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(1.5).timeout
+	
+	game_viewport.add_child(current_game)
+	
 	await play_wipe(
 		screen_wipe, tex2d,
 		(
@@ -192,6 +193,8 @@ func play_end_sequence(packed_scene, old, new):
 	if win.has_method("set_initial_value"):
 		win.set_initial_value(old)
 	
+	current_game.get_parent().remove_child(current_game)
+	
 	await play_wipe(
 		screen_wipe, tex2d,
 		(
@@ -204,7 +207,7 @@ func play_end_sequence(packed_scene, old, new):
 	if win.has_method("animate_value_change"):
 		await win.animate_value_change(old, new)
 	
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(1.5).timeout
 
 
 func start_game():
@@ -296,7 +299,6 @@ func unload_game():
 		default_timer.queue_free()
 	
 	if current_game:
-		current_game.get_parent().remove_child(current_game)
 		current_game.queue_free()
 	
 	game_viewport.size_2d_override.x = 0

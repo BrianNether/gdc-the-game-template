@@ -29,7 +29,7 @@ func display_controls(info : MicroGameInfo):
 func play_controls(description_text, inp : Control):
 	hide_all()
 	await pop_in(inp, Vector2(5.0, 5.0))
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.7).timeout
 	description.text = description_text
 	await pop_in(description, Vector2(0.1, 0.1))
 	
