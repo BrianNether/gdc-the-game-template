@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cji2wkyx727kh" path="res://main/micro_game_selection.gd" id="1_pr0yn"]
 [ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="2_baikb"]
-[ext_resource type="Resource" uid="uid://bi50b2p78eoat" path="res://micro_games/midnight_deadline/midnight_deadline.tres" id="3_2rugr"]
+[ext_resource type="Resource" uid="uid://m0r2l5w0awp6" path="res://micro_games/find_a_seat/find_a_seat.tres" id="3_hbvse"]
 
 [resource]
 script = ExtResource("1_pr0yn")
-selected_games = Array[ExtResource("2_baikb")]([ExtResource("3_2rugr")])
+selected_games = Array[ExtResource("2_baikb")]([ExtResource("3_hbvse")])
 metadata/_custom_type_script = "uid://cji2wkyx727kh"

@@ -92,10 +92,10 @@ func set_sprites_from_sheets(head_sheet: Texture2D, body_sheet: Texture2D) -> vo
 	
 func set_sprite_from_sheet(sprite: AnimatedSprite2D, sheet: Texture2D) -> void:
 	if sheet == null:
-		sprite.visible = false
+		sprite.self_modulate = Color.TRANSPARENT
 		return
 	sheet = replace_colors(sheet)
-	sprite.visible = true
+	sprite.self_modulate = Color.WHITE
 	var frames := sprite.sprite_frames
 	var frame_size := sheet.get_size() * Vector2(1.0 / FRAME_COUNT, 1.0)
 	frames.clear("default")

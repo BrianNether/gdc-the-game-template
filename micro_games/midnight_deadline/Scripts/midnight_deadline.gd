@@ -2,10 +2,10 @@ extends MicroGame
 class_name MidnightDeadline
 
 const GameSFX = preload("res://micro_games/midnight_deadline/Scripts/game_sfx.gd")
-const AdPopupSmall := preload("res://micro_games/midnight_deadline/ad_popup_small.tscn")
-const AdPopupMedium := preload("res://micro_games/midnight_deadline/ad_popup_medium.tscn")
-const AdPopupLarge := preload("res://micro_games/midnight_deadline/ad_popup_large.tscn")
-const AD_POPUP_SCENES: Array[PackedScene] = [AdPopupSmall, AdPopupMedium, AdPopupLarge]
+#const AdPopupSmall := preload("res://micro_games/midnight_deadline/ad_popup_small.tscn")
+#const AdPopupMedium := preload("res://micro_games/midnight_deadline/ad_popup_medium.tscn")
+#const AdPopupLarge := preload("res://micro_games/midnight_deadline/ad_popup_large.tscn")
+const AD_POPUP_SCENES: Array[PackedScene] = []
 
 ## Drag the essay into the browser's dropzone and hit Submit before the
 ## taskbar clock hits 12:00:00. Logic only - visuals live in the .tscn,

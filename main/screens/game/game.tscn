@@ -74,4 +74,3 @@ layer = 2
 layer = 3
 
 [node name="MusicPlayer" parent="." unique_id=929919593 instance=ExtResource("11_a2qi7")]
-bus = &"bgm_muffled"
