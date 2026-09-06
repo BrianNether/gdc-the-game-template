@@ -15,14 +15,24 @@ run/main_scene="uid://bsna6cxe6ong7"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://csdlaepwq5ey"
+general/default_playback_type.web=0
+
 [autoload]
 
 GameManager="*uid://chs5h40m667kc"
+Talo="*uid://bpmdn8oc34pg7"
 
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/talo/plugin.cfg")
 
 [input]
 

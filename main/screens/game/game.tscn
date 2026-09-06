@@ -2,31 +2,23 @@
 
 [ext_resource type="Script" uid="uid://h8nx6qhkmjcj" path="res://main/screens/game/game.gd" id="1_5ttid"]
 [ext_resource type="PackedScene" uid="uid://b4jstj5m6fgq4" path="res://shared/timers/default_timer_ui/default_timer_ui.tscn" id="2_mgkyc"]
-[ext_resource type="Resource" uid="uid://bmwgp1jktvgrp" path="res://micro_games/release_pack.tres" id="3_bg6tk"]
 [ext_resource type="PackedScene" uid="uid://wn163avtbdhb" path="res://shared/timers/default_timer_v1/default_timer.tscn" id="3_s0qyw"]
-[ext_resource type="Resource" uid="uid://2v8m4ue56hee" path="res://shared/transitions/chase_bugs/chase_bug_lose.tres" id="4_8damv"]
-[ext_resource type="Resource" uid="uid://ppu8stn1iu6g" path="res://micro_games/test_pack.tres" id="4_87ans"]
-[ext_resource type="Script" uid="uid://ccqkcbfi77v8e" path="res://main/screens/game/run_micro_games.gd" id="5_8damv"]
-[ext_resource type="Script" uid="uid://v8wo848a1qhs" path="res://main/screens/game/transitions/transition_sequence.gd" id="5_cuboj"]
-[ext_resource type="Resource" uid="uid://buprnem5q1hbr" path="res://shared/transitions/default_transition_pack/default_transition_pack.tres" id="5_ewj8m"]
-[ext_resource type="Script" uid="uid://d658l3eo5yb0" path="res://main/screens/game/transitions/transition.gd" id="6_fnicf"]
-[ext_resource type="Script" uid="uid://bn476yihxmrs0" path="res://shared/transitions/default_transition_pack/debug_transition.gd" id="8_cuboj"]
+[ext_resource type="PackedScene" uid="uid://c1ayqr1rwdxr3" path="res://shared/transitions/wipes/star_wipe/star-wipe.tscn" id="4_a2qi7"]
+[ext_resource type="Script" uid="uid://ccqkcbfi77v8e" path="res://main/screens/game/game_selector.gd" id="5_8damv"]
+[ext_resource type="PackedScene" uid="uid://0jno1t6fnkp0" path="res://shared/transitions/win_lose_screens/win1.tscn" id="5_cuboj"]
+[ext_resource type="PackedScene" uid="uid://cy01vpftehrbq" path="res://shared/transitions/win_lose_screens/lose1/lose1.tscn" id="6_fnicf"]
+[ext_resource type="PackedScene" uid="uid://ijetl8g4n1kc" path="res://shared/transitions/instruction_popup/default_instruction_popup/default_instruction_popup.tscn" id="7_a2qi7"]
+[ext_resource type="Resource" uid="uid://bmk12fqp3udhw" path="res://main/screens/game/test_select.tres" id="8_a2qi7"]
 [ext_resource type="PackedScene" uid="uid://b0evmwm0qm4pd" path="res://main/screens/game/audio_interface/music_player.tscn" id="11_a2qi7"]
-
-[sub_resource type="Resource" id="Resource_a2qi7"]
-script = ExtResource("5_cuboj")
-transitions = Array[ExtResource("6_fnicf")]([ExtResource("5_ewj8m")])
-metadata/_custom_type_script = "uid://v8wo848a1qhs"
-
-[sub_resource type="Resource" id="Resource_fnicf"]
-script = ExtResource("8_cuboj")
-text = "Speeding Up!"
-time = 0.1
-metadata/_custom_type_script = "uid://bn476yihxmrs0"
+[ext_resource type="Script" uid="uid://b8li1jb2oirqy" path="res://main/screens/game/micro_game_cache.gd" id="11_cuboj"]
 
 [sub_resource type="Resource" id="Resource_bsumw"]
 script = ExtResource("5_8damv")
 metadata/_custom_type_script = "uid://ccqkcbfi77v8e"
+
+[sub_resource type="Resource" id="Resource_gmayk"]
+script = ExtResource("11_cuboj")
+metadata/_custom_type_script = "uid://b8li1jb2oirqy"
 
 [node name="Game" type="Control" unique_id=189926272]
 layout_mode = 3
@@ -38,15 +30,14 @@ grow_vertical = 2
 script = ExtResource("1_5ttid")
 default_timer_no_UI = ExtResource("3_s0qyw")
 default_timer_with_UI = ExtResource("2_mgkyc")
-exit_game_win_transtion = ExtResource("4_8damv")
-exit_game_lose_transtion = ExtResource("4_8damv")
-enter_game_transtion = SubResource("Resource_a2qi7")
-speed_up_transtion = SubResource("Resource_fnicf")
-score_up_transtion = ExtResource("5_ewj8m")
-lives_down_transtion = ExtResource("5_ewj8m")
-release_pack = ExtResource("3_bg6tk")
-test_pack = ExtResource("4_87ans")
+screen_wipe = ExtResource("4_a2qi7")
+score_up = ExtResource("5_cuboj")
+lives_down = ExtResource("6_fnicf")
+instructions = ExtResource("7_a2qi7")
+selection = ExtResource("8_a2qi7")
 game_selector = SubResource("Resource_bsumw")
+game_loader = SubResource("Resource_gmayk")
+speed_up_frequency = 19
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=778280988]
 
@@ -76,7 +67,11 @@ size_2d_override = Vector2i(1920, 1080)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="TransitionOverlay" type="CanvasLayer" parent="." unique_id=1275393343]
+[node name="InfoLayer" type="CanvasLayer" parent="." unique_id=1275393343]
 layer = 2
 
+[node name="TransitionOverlay" type="CanvasLayer" parent="." unique_id=346315885]
+layer = 3
+
 [node name="MusicPlayer" parent="." unique_id=929919593 instance=ExtResource("11_a2qi7")]
+bus = &"bgm_muffled"

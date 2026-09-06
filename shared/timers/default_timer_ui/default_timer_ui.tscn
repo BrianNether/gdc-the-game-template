@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ttwaj8r7i1vf" path="res://shared/timers/default_timer_ui/default_timer_ui.gd" id="1_e4xuu"]
 [ext_resource type="Script" uid="uid://bvevn42has1dp" path="res://main/screens/game/digits.gd" id="2_hx17u"]
-[ext_resource type="Texture2D" uid="uid://co5kq317t2tu3" path="res://main/assets/digits/Frame 1.png" id="3_tm53m"]
+[ext_resource type="Texture2D" uid="uid://bbhlua0an0231" path="res://main/assets/digits/digit0.png" id="3_tm53m"]
 
 [node name="DefaultTimer" type="Control" unique_id=1741125020]
 layout_mode = 3
