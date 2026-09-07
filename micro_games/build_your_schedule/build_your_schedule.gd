@@ -126,6 +126,7 @@ func update_selected_courses() -> void:
 		for i in range(len(day_courses)):
 			var day_course := day_courses[i]
 			var faux_course: BuildScheduleCourse = null
+			var should_grow_in := false
 			for other_faux_course in get_child_courses(%ScheduleArea):
 				if other_faux_course.associated_day != day: continue
 				if other_faux_course.associated_course == day_course:
@@ -134,7 +135,7 @@ func update_selected_courses() -> void:
 			if not faux_course:
 				faux_course = preload("res://micro_games/build_your_schedule/course.tscn").instantiate()
 				%ScheduleArea.add_child(faux_course)
-				faux_course.grow_in()
+				should_grow_in = true
 				faux_course.clicked.connect(deselect_course.bind(day_course))
 				faux_course.associated_course = day_course
 				faux_course.associated_day = day
@@ -143,10 +144,11 @@ func update_selected_courses() -> void:
 				faux_course.tween.kill()
 			var faux_course_size := BuildScheduleCourse.BASE_SIZE
 			faux_course_size.x /= len(day_courses)
-			faux_course.set_deferred("size", faux_course_size)
-			faux_course.set_deferred("global_position", course_position + Vector2.RIGHT * faux_course_size.x * i)
+			faux_course.size = faux_course_size
+			faux_course.global_position = course_position + Vector2.RIGHT * faux_course_size.x * i
 			faux_course.set_style(day_course.style)
 			faux_course.set_days([])
+			if should_grow_in: faux_course.grow_in()
 	update_submit_button()
 	
 func update_submit_button() -> void:

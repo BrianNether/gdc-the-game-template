@@ -53,7 +53,6 @@ func set_days(new_days: Array) -> void:
 	%Label.text = %Label.text.trim_suffix("\n")
 	
 func grow_in() -> void:
-	await get_tree().process_frame
 	if tween: tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_QUAD)
 	scale = Vector2.ZERO
